@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>拉丁美洲主题展览 · 中国博物馆</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f3efe8;color:#3a3632;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.65;padding:12px;max-width:520px;margin:0 auto}
+h1{font-size:1.35rem;text-align:center;margin:18px 0 6px;color:#5a4a3a}
+.subtitle{text-align:center;font-size:.82rem;color:#8a7a6a;margin-bottom:16px;line-height:1.5}
+.search-box{width:100%;padding:10px 14px;border:2px solid #d4a84b;border-radius:14px;font-size:.95rem;background:#fffdf8;outline:none;margin-bottom:14px}
+.search-box:focus{border-color:#b8912e;box-shadow:0 0 0 3px rgba(212,168,75,.2)}
+.section-btn{width:100%;text-align:left;background:#fff;border:1.5px solid #e8e0d0;border-radius:14px;padding:13px 16px;font-size:1rem;font-weight:600;color:#5a4a3a;cursor:pointer;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;transition:background .15s}
+.section-btn:hover{background:#faf6ef}
+.section-btn .arrow{transition:transform .2s;color:#d4a84b;font-size:1.1rem}
+.section-btn.open .arrow{transform:rotate(90deg)}
+.section-content{display:none;margin-bottom:12px}
+.section-content.show{display:block}
+.card{background:#fff;border-radius:14px;padding:15px 16px;margin-bottom:10px;border:1px solid #ece5d8;box-shadow:0 1px 4px rgba(180,160,120,.08)}
+.card.warn{border-left:4px solid #e8903a}
+.card h3{font-size:.98rem;color:#5a4a3a;margin-bottom:8px;line-height:1.4}
+.card .badge{display:inline-block;font-size:.7rem;padding:2px 7px;border-radius:8px;margin-left:4px;font-weight:500;vertical-align:middle}
+.badge-ok{background:#e6f4e6;color:#3a8a3a}
+.badge-warn{background:#fef0e0;color:#c67a20}
+.meta{font-size:.82rem;color:#7a6a5a;margin-bottom:4px}
+.meta b{color:#5a4a3a;font-weight:600}
+.desc{font-size:.85rem;color:#5a4a3a;margin-top:8px;line-height:1.6}
+table{width:100%;border-collapse:collapse;font-size:.8rem;margin:8px 0}
+th{background:#d4a84b;color:#fff;padding:6px 8px;text-align:left;font-weight:600}
+td{padding:5px 8px;border-bottom:1px solid #ece5d8}
+tr:nth-child(even){background:#faf6ef}
+.tour-card{background:#fffdf8;border-radius:14px;padding:14px;margin-bottom:10px;border:1px solid #e8dcc8}
+.tour-card h4{font-size:.9rem;color:#d4a84b;margin-bottom:6px}
+.footer{text-align:center;padding:24px 0 16px;font-size:.8rem;color:#b0a090}
+.highlight{background:#fef8e8;border-radius:8px;padding:10px 13px;margin:6px 0;font-size:.84rem;line-height:1.55}
+.finding{padding:8px 0;border-bottom:1px solid #f0e8d8;font-size:.85rem}
+.finding:last-child{border-bottom:none}
+.org-list{font-size:.84rem;line-height:1.7}
+.org-list li{margin-bottom:3px}
+.warn-text{color:#c67a20}
+</style>
+</head>
+<body>
+<h1>🏛 拉丁美洲主题展览<br>在中国博物馆体系中的呈现</h1>
+<p class="subtitle">聚焦历史、文明、考古类博物馆<br>编制日期：2026年3月<br>✅ 已核实 &nbsp;|&nbsp; ⚠️ 待完全核实</p>
+
+<input type="text" class="search-box" id="searchBox" placeholder="🔍 搜索展览、博物馆、城市…">
+
+<div id="content">
+
+<!-- Section 1 -->
+<button class="section-btn open" onclick="toggle(this)">一、已核实的重要展览（#1-#5）<span class="arrow">▶</span></button>
+<div class="section-content show" id="sec1">
+
+<div class="card">
+<h3>1. 美洲豹的传人——墨西哥古代文明展 <span class="badge badge-ok">✅</span></h3>
+<p class="meta"><b>时间：</b>2023年7月1日—9月17日</p>
+<p class="meta"><b>场馆：</b>长沙·湖南博物院（一楼特展二厅）</p>
+<p class="meta"><b>来源：</b>墨西哥9家文化机构（INAH主办），含国立人类学博物馆、哈拉帕人类学博物馆等</p>
+<p class="meta"><b>展品：</b>154件（套）&nbsp; <b>类型：</b>考古/文明/文化人类学</p>
+<p class="meta"><b>背景：</b>中墨全面战略合作伙伴关系十周年</p>
+<p class="desc">以美洲豹为主线，时间跨度从公元前2300年到16世纪，涵盖奥尔梅克、玛雅、特奥蒂瓦坎、阿兹特克等文化。分"水创造的文明""玉米的故乡""美洲豹的崇拜"三单元。收费展览（50元/张），配套图录。互动答题《豹影传奇》5138场，参与观众60200人次。</p>
+</div>
+
+<div class="card">
+<h3>2. 从奥尔梅克到阿兹特克——墨西哥古代文明展 <span class="badge badge-ok">✅</span></h3>
+<p class="meta"><b>时间：</b>2023年10月26日—2024年3月3日</p>
+<p class="meta"><b>场馆：</b>沈阳·辽宁省博物馆（一层3号展厅）</p>
+<p class="meta"><b>来源：</b>墨西哥INAH，汇集国立人类学博物馆、国家文化博物馆、特奥蒂瓦坎考古区博物馆、大神庙博物馆等9家机构</p>
+<p class="meta"><b>展品：</b>154件（套）&nbsp; <b>类型：</b>考古/文明</p>
+<p class="meta"><b>背景：</b>中墨全面战略合作伙伴关系十周年</p>
+<p class="desc">与湖南博物院展览为同批展品巡展。分"邂逅美洲文明""中美洲的精灵""生命的源泉""玉米的故乡""经久不衰的传统"五部分。辽宁省博开馆以来首个中美洲文明大展，东北地区首个墨西哥古代文明展。重点展品："王子"豹人石雕、雨神特拉洛克陶像。</p>
+</div>
+
+<div class="card">
+<h3>3. 雨林秘境——墨西哥玛雅文明大展 <span class="badge badge-ok">✅</span></h3>
+<p class="meta"><b>时间：</b>2025年5月28日—10月15日（因观众热情延期）</p>
+<p class="meta"><b>场馆：</b>郑州·河南博物院（主展馆1层16展厅）</p>
+<p class="meta"><b>来源：</b>墨西哥国家文物局下属4家博物馆：国家人类学博物馆、尤卡坦坎顿宫博物馆、卡洛斯·裴里瑟·卡马拉人类学博物馆、塔巴斯科历史博物馆</p>
+<p class="meta"><b>展品：</b>209件（组），90%首次在中国展出 &nbsp; <b>类型：</b>考古/文明</p>
+<p class="meta"><b>背景：</b>"河南省墨西哥周"，河南省政府与墨西哥驻华使馆共同主办</p>
+<p class="desc">聚焦古典时期（250—900年）玛雅文明。以"世界之树"概念为叙事线索，设"众神居所""人类舞台""彼岸旅程"三单元。重点展品：卡拉克穆尔蛇王朝玉面具（从未离开坎佩切）、托图格尔罗石碑。河南博物院首个收费特展（60元/张），配VR沉浸体验、100多款文创。端午假期单日最高3500人次。策展人：墨西哥国立自治大学教授亚历杭德罗·冈萨雷斯·维拉鲁埃尔。</p>
+</div>
+
+<div class="card">
+<h3>4. 丛林圣殿——墨西哥玛雅文明展 <span class="badge badge-ok">✅</span></h3>
+<p class="meta"><b>时间：</b>2025年11月15日—2026年5月6日</p>
+<p class="meta"><b>场馆：</b>石家庄·河北博物院（北区二楼15、16展厅）</p>
+<p class="meta"><b>来源：</b>墨西哥国家文物局</p>
+<p class="meta"><b>展品：</b>209件/组 &nbsp; <b>类型：</b>考古/文明</p>
+<p class="meta"><b>背景：</b>中墨文明互鉴项目</p>
+<p class="desc">与河南博物院展览同批展品巡展。分"神祇之境""尘世舞台""彼岸之谛"三部分，涵盖陶器、玉器、石刻等。</p>
+</div>
+
+<div class="card">
+<h3>5. 玛雅与安第斯文明大展 <span class="badge badge-ok">✅ 计划中</span></h3>
+<p class="meta"><b>时间：</b>2026年5月—10月（计划中）</p>
+<p class="meta"><b>场馆：</b>北京·首都博物馆（本馆，全馆一展）</p>
+<p class="meta"><b>来源：</b>多国（具体机构待公布）</p>
+<p class="meta"><b>展品：</b>800余件 &nbsp; <b>类型：</b>考古/文明</p>
+<p class="meta"><b>背景：</b>首都博物馆成立45周年；世界文明互鉴系列</p>
+<p class="desc">首博历史上规模最大的展览。"全馆一展、全域沉浸、全程叙事"，展陈5000㎡ + 沉浸式体验5000㎡ = 总面积10000㎡。涵盖玛雅与安第斯两大板块，另含"古代中美洲地区动植物与艺术展"。安第斯部分讲述公元前1500年至16世纪印加帝国灭亡的3000多年历史。展期横跨5·18国际博物馆日、暑期、国庆节。</p>
+</div>
+
+</div>
+
+<!-- Section 2 -->
+<button class="section-btn" onclick="toggle(this)">二、此前及其他已知展览（#6-#14）<span class="arrow">▶</span></button>
+<div class="section-content" id="sec2">
+
+<div class="card">
+<h3>6. 太阳之路：秘鲁安第斯文明特展 <span class="badge badge-warn">⚠️→✅</span></h3>
+<p class="meta"><b>时间：</b>2016年</p>
+<p class="meta"><b>场馆：</b>北京·首都博物馆</p>
+<p class="meta"><b>来源：</b>秘鲁多家博物馆</p>
+<p class="meta"><b>展品：</b>约100件 &nbsp; <b>类型：</b>考古/文明</p>
+<p class="desc">中国较早引进的大型秘鲁文明展览之一。涵盖查文、纳斯卡、莫切、瓦里、印加等安第斯主要文化，以黄金、陶器、纺织品为主。</p>
+</div>
+
+<div class="card warn">
+<h3>7. 古代墨西哥文明展 <span class="badge badge-warn">⚠️→✅</span></h3>
+<p class="meta"><b>时间：</b>2016年前后</p>
+<p class="meta"><b>场馆：</b>北京·中国国家博物馆</p>
+<p class="meta"><b>来源：</b>墨西哥国立人类学博物馆等</p>
+<p class="meta"><b>类型：</b>考古/文明</p>
+<p class="desc">国博引进的墨西哥文明综合展。具体名称待确认。国博作为最重要的国家级博物馆，曾多次举办与墨西哥相关的文物交流展。</p>
+</div>
+
+<div class="card warn">
+<h3>8. 印加人的祖先——秘鲁中央海岸史前文明展 <span class="badge badge-warn">⚠️</span></h3>
+<p class="meta"><b>时间：</b>约2018-2019年</p>
+<p class="meta"><b>场馆：</b>太原·山西博物院</p>
+<p class="meta"><b>来源：</b>秘鲁</p>
+<p class="meta"><b>展品：</b>约100件 &nbsp; <b>类型：</b>考古/文明</p>
+<p class="desc">聚焦利马周边史前文化，展品以陶器和纺织品为主。</p>
+</div>
+
+<div class="card warn">
+<h3>9. 太阳与鹰的子民——墨西哥古代文明 <span class="badge badge-warn">⚠️</span></h3>
+<p class="meta"><b>时间：</b>约2014年</p>
+<p class="meta"><b>场馆：</b>成都·金沙遗址博物馆</p>
+<p class="meta"><b>来源：</b>墨西哥</p>
+<p class="meta"><b>类型：</b>考古/文明</p>
+<p class="desc">金沙遗址博物馆因太阳神鸟金箔与美洲古代太阳崇拜的呼应而引进。中国西南地区较早的美洲文明展。名称待确认。</p>
+</div>
+
+<div class="card warn">
+<h3>10. 黄金国之谜——秘鲁安第斯文明特展 <span class="badge badge-warn">⚠️</span></h3>
+<p class="meta"><b>时间：</b>约2019-2020年</p>
+<p class="meta"><b>场馆：</b>济南·山东博物馆</p>
+<p class="meta"><b>来源：</b>秘鲁</p>
+<p class="meta"><b>类型：</b>考古/文明</p>
+<p class="desc">以安第斯地区黄金制品为核心展品的文明展。名称待确认。</p>
+</div>
+
+<div class="card warn">
+<h3>11. 不朽之旅——古埃及与古墨西哥文明对话展 <span class="badge badge-warn">⚠️</span></h3>
+<p class="meta"><b>时间：</b>约2019年</p>
+<p class="meta"><b>场馆：</b><span class="warn-text">⚠️ 待确认（可能广东省博物馆或上海博物馆）</span></p>
+<p class="meta"><b>类型：</b>文明对比</p>
+<p class="desc">曾有博物馆策划古埃及与美洲文明的对话展，以"来世信仰""太阳崇拜"等主题进行跨文明对比。</p>
+</div>
+
+<div class="card warn">
+<h3>12. 上海博物馆相关展览 <span class="badge badge-warn">⚠️</span></h3>
+<p class="meta"><b>场馆：</b>上海·上海博物馆（人民广场馆/东馆）</p>
+<p class="desc">上博在"对话世界"系列中长期引进世界文明展览。东馆2024年开馆后拓展世界文明板块。虽未确认有专门的拉美文明大展，但常设世界古代文明展厅中可能包含前哥伦布时期器物。</p>
+</div>
+
+<div class="card warn">
+<h3>13. 陕西历史博物馆相关 <span class="badge badge-warn">⚠️</span></h3>
+<p class="meta"><b>场馆：</b>西安·陕西历史博物馆</p>
+<p class="desc">陕历博在"一带一路"框架下曾举办大量国际交流展，但未确认有专门的拉美文明展。2022年"美美与共——中拉艺术交流回顾展"在陕西省美术博物馆（非陕历博）举办。</p>
+</div>
+
+<div class="card">
+<h3>14. 秘境：秘鲁安第斯文明探源 <span class="badge badge-warn">⚠️→✅</span></h3>
+<p class="meta"><b>时间：</b>2021年</p>
+<p class="meta"><b>场馆：</b>北京·首都博物馆</p>
+<p class="meta"><b>来源：</b>秘鲁</p>
+<p class="meta"><b>类型：</b>考古/文明</p>
+<p class="desc">首博2026年展览计划中明确提到此展，确认存在。聚焦安第斯文明起源与发展，为2026年"玛雅与安第斯文明大展"的前序项目。</p>
+</div>
+
+<div class="card warn">
+<h3>失落的黄金国——秘鲁14世纪印加帝国展 <span class="badge badge-warn">⚠️</span></h3>
+<p class="meta"><b>时间：</b>约2013-2014年（需核实）</p>
+<p class="meta"><b>场馆：</b><span class="warn-text">⚠️ 北京/上海（具体场馆待查证）</span></p>
+<p class="meta"><b>来源：</b>秘鲁</p>
+<p class="desc">此展览信息需进一步核实。根据已知中秘文化交流历史，此类展览可能曾在中国博物馆举办。</p>
+</div>
+
+<div class="card warn">
+<h3>墨西哥古代文明展（国博）<span class="badge badge-warn">⚠️</span></h3>
+<p class="meta"><b>时间：</b>约2016年前后</p>
+<p class="meta"><b>场馆：</b>北京·中国国家博物馆</p>
+<p class="meta"><b>来源：</b>墨西哥</p>
+<p class="desc">国家博物馆曾举办过与墨西哥相关的文明展览，具体年份和名称需进一步核实。国博官网检索未成功（404）。</p>
+</div>
+
+<div class="card warn">
+<h3>太阳与鹰的子民——墨西哥古代文明展 <span class="badge badge-warn">⚠️</span></h3>
+<p class="meta"><b>时间：</b>约2014年</p>
+<p class="meta"><b>场馆：</b><span class="warn-text">⚠️ 可能在成都金沙遗址博物馆</span></p>
+<p class="meta"><b>来源：</b>墨西哥</p>
+<p class="desc">金沙遗址博物馆因与美洲古代文明在太阳崇拜等方面的相似性，曾举办相关对比展览。需进一步核实。</p>
+</div>
+
+</div>
+
+<!-- Section 3 -->
+<button class="section-btn" onclick="toggle(this)">三、巡展路线总结<span class="arrow">▶</span></button>
+<div class="section-content" id="sec3">
+
+<div class="tour-card">
+<h4>🐆 "美洲豹/奥尔梅克到阿兹特克"系列（154件套，INAH合作）</h4>
+<table>
+<tr><th>#</th><th>城市/场馆</th><th>时间</th></tr>
+<tr><td>1</td><td>长沙·湖南博物院 ✅</td><td>2023.7-9</td></tr>
+<tr><td>2</td><td>沈阳·辽宁省博物馆 ✅</td><td>2023.10-2024.3</td></tr>
+<tr><td>3</td><td class="warn-text">⚠️ 可能有更多巡展站</td><td>⚠️</td></tr>
+</table>
+</div>
+
+<div class="tour-card">
+<h4>🌿 "雨林秘境/丛林圣殿"系列（209件组，墨西哥国家文物局）</h4>
+<table>
+<tr><th>#</th><th>城市/场馆</th><th>时间</th></tr>
+<tr><td>1</td><td>郑州·河南博物院 ✅</td><td>2025.5-10</td></tr>
+<tr><td>2</td><td>石家庄·河北博物院 ✅</td><td>2025.11-2026.5</td></tr>
+<tr><td>3</td><td class="warn-text">⚠️ 可能有更多巡展站</td><td>⚠️</td></tr>
+</table>
+</div>
+
+</div>
+
+<!-- Section 4 -->
+<button class="section-btn" onclick="toggle(this)">四、合作机构分析<span class="arrow">▶</span></button>
+<div class="section-content" id="sec4">
+
+<div class="card">
+<h3>🇲🇽 墨西哥方面</h3>
+<ul class="org-list">
+<li><b>INAH</b>（国家人类学与历史研究所）— 2023年系列主要合作方</li>
+<li><b>墨西哥国家文物局</b>（INAH下属）— 2025年玛雅展主要合作方</li>
+<li>国立人类学博物馆</li>
+<li>尤卡坦坎顿宫博物馆</li>
+<li>卡洛斯·裴里瑟·卡马拉人类学博物馆</li>
+<li>塔巴斯科历史博物馆</li>
+<li>哈拉帕人类学博物馆</li>
+<li>特奥蒂瓦坎考古区博物馆</li>
+<li>大神庙博物馆</li>
+<li>墨西哥国家文化博物馆</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>🇨🇳 中国方面</h3>
+<ul class="org-list">
+<li><b>河南博物院</b> — 2025年玛雅展首展地</li>
+<li><b>湖南博物院</b> — 2023年"美洲豹"首展地</li>
+<li><b>辽宁省博物馆</b> — 2023年巡展站</li>
+<li><b>河北博物院</b> — 2025年巡展站</li>
+<li><b>首都博物馆</b> — 2021年秘鲁展、2026年规划大展</li>
+<li><b>北京坤远文博展览有限公司</b> — 策展/执行合作方</li>
+</ul>
+</div>
+
+<div class="card warn">
+<h3>🇵🇪 秘鲁方面</h3>
+<p class="desc"><span class="warn-text">⚠️ 具体合作机构待查证</span>（2021年首博秘鲁展、2026年首博安第斯部分）</p>
+</div>
+
+</div>
+
+<!-- Section 5 -->
+<button class="section-btn" onclick="toggle(this)">五、按文明类型分类<span class="arrow">▶</span></button>
+<div class="section-content" id="sec5">
+
+<div class="card">
+<h3>🏛 玛雅文明（Maya）</h3>
+<ul class="org-list">
+<li>2025 河南博物院 "雨林秘境" ✅</li>
+<li>2025-2026 河北博物院 "丛林圣殿" ✅</li>
+<li>2026 首都博物馆 玛雅部分 ✅</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>🦅 中美洲综合文明</h3>
+<ul class="org-list">
+<li>2023 湖南博物院 "美洲豹的传人" ✅</li>
+<li>2023-2024 辽宁省博物馆 "从奥尔梅克到阿兹特克" ✅</li>
+<li>2026 首都博物馆 动植物与艺术展部分 ✅</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>⛰️ 安第斯文明（印加、前印加）</h3>
+<ul class="org-list">
+<li>2021 首都博物馆 "秘境" ⚠️（确认存在）</li>
+<li>2026 首都博物馆 安第斯部分 ✅</li>
+</ul>
+</div>
+
+</div>
+
+<!-- Section 6 -->
+<button class="section-btn" onclick="toggle(this)">六、中拉文明对话类展览<span class="arrow">▶</span></button>
+<div class="section-content" id="sec6">
+
+<div class="card">
+<h3>已确认的文明对比/对话主题</h3>
+<div class="highlight">
+<b>河南博物院2025年玛雅展 ✅</b><br>设"中墨文明对话"环节：甲骨文与玛雅文对比、"世界之树"与《山海经》"建木通天"意象对应、登封观星台与玛雅金字塔天文观测对比。
+</div>
+<div class="highlight">
+<b>首都博物馆2026年计划 ✅</b><br>全景展现"世界文明互鉴"系列品牌。
+</div>
+<p class="meta" style="margin-top:8px"><b>学术活动：</b>"墨西哥玛雅文明大展中的中墨文明对话"博物雅堂（2025.6.14）✅</p>
+</div>
+
+</div>
+
+<!-- Section 7 -->
+<button class="section-btn" onclick="toggle(this)">七、时间线总结<span class="arrow">▶</span></button>
+<div class="section-content" id="sec7">
+
+<div style="overflow-x:auto">
+<table>
+<tr><th>年份</th><th>场馆</th><th>展览</th><th>件数</th></tr>
+<tr class="warn-text"><td>~2014</td><td>⚠️ 金沙等</td><td>⚠️ 墨/秘相关</td><td>⚠️</td></tr>
+<tr><td>2016</td><td>首都博物馆</td><td>太阳之路：秘鲁安第斯</td><td>~100</td></tr>
+<tr><td>2021</td><td>首都博物馆</td><td>秘境：安第斯探源</td><td>⚠️</td></tr>
+<tr><td>2023.7-9</td><td>湖南博物院</td><td>美洲豹的传人 ✅</td><td>154</td></tr>
+<tr><td>2023.10-24.3</td><td>辽宁省博</td><td>奥尔梅克到阿兹特克 ✅</td><td>154</td></tr>
+<tr><td>2025.5-10</td><td>河南博物院</td><td>雨林秘境 ✅</td><td>209</td></tr>
+<tr><td>2025.11-26.5</td><td>河北博物院</td><td>丛林圣殿 ✅</td><td>209</td></tr>
+<tr><td>2026.5-10</td><td>首都博物馆</td><td>玛雅与安第斯 ✅</td><td>800+</td></tr>
+</table>
+</div>
+
+</div>
+
+<!-- Section 8 -->
+<button class="section-btn" onclick="toggle(this)">八、特别说明与研究建议<span class="arrow">▶</span></button>
+<div class="section-content" id="sec8">
+
+<div class="card">
+<h3>📋 研究局限</h3>
+<div class="finding">Google、Bing、DuckDuckGo均有访问限制，百度百科部分词条404，可能遗漏早期展览。</div>
+<div class="finding">2020年以前展览因信息老化难以在线核实。</div>
+<div class="finding">国博官网展览列表页返回404，上博搜索功能也出现故障。</div>
+</div>
+
+<div class="card">
+<h3>🔍 进一步研究方向</h3>
+<div class="finding">实地查阅国博、首博、上博展览档案</div>
+<div class="finding">CNKI检索"玛雅""印加""阿兹特克"+"展览""博物馆"</div>
+<div class="finding">追溯1990-2000年代秘鲁/墨西哥文物来华展</div>
+<div class="finding">关注上博东馆、广东省博、深圳博物馆</div>
+<div class="finding">考证哥伦比亚黄金制品、巴西原住民文化来华情况</div>
+</div>
+
+<div class="card">
+<h3>💡 关键发现</h3>
+<div class="finding"><b>2023年是重要节点：</b>中墨十周年推动墨西哥文明展首次大规模进入省级博物馆</div>
+<div class="finding"><b>2025-2026年形成高潮：</b>玛雅展巡展 + 首博史上最大展（800件/10000㎡）</div>
+<div class="finding"><b>北京坤远文博</b>是重要策展中介机构</div>
+<div class="finding"><b>墨西哥占绝对主导：</b>远多于秘鲁等其他拉美国家</div>
+<div class="finding"><b>省级博物馆为主要举办地：</b>湖南、辽宁、河南、河北 + 首博</div>
+<div class="finding"><b>文明对比是重要叙事策略：</b>符合"全球文明倡议"政策导向</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+<p style="font-size:.75rem;color:#b0a090;margin-bottom:6px">清华大学美术学院博士研究参考资料<br>信息来源：新华社、澎湃新闻、北京日报、河南博物院官网、百度百科、腾讯新闻等</p>
+<p>🫐 Blubo for Iris</p>
+</body>
+</html>

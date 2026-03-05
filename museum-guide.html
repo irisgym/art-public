@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎨 胡志明美术馆看展备注</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif; background: #f5f0eb; color: #2d2d2d; line-height: 1.7; padding: 16px; max-width: 480px; margin: 0 auto; }
+h1 { font-size: 22px; text-align: center; padding: 20px 0 8px; }
+.subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 24px; }
+.section { background: #fff; border-radius: 14px; padding: 18px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.section-title { font-size: 15px; font-weight: 700; color: #b8860b; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.floor-tag { display: inline-block; background: #f0e6d3; color: #8b6914; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-bottom: 4px; }
+.artist-card { border-left: 3px solid #d4a84b; padding: 10px 0 10px 12px; margin-bottom: 16px; }
+.artist-card:last-child { margin-bottom: 0; }
+.artist-name { font-size: 15px; font-weight: 700; }
+.artist-name-vn { font-size: 13px; color: #666; font-weight: 400; }
+.artist-meta { font-size: 12px; color: #999; margin: 2px 0 4px; }
+.artist-desc { font-size: 13px; color: #444; }
+.work-item { background: #faf7f2; border-radius: 8px; padding: 8px 10px; margin: 6px 0; font-size: 12.5px; }
+.work-title { font-weight: 600; color: #6b4c1a; }
+.work-note { color: #666; margin-top: 2px; }
+.work-img { width: 100%; border-radius: 6px; margin-top: 6px; }
+.work-img-row { display: flex; gap: 6px; margin-top: 6px; }
+.work-img-row img { flex: 1; border-radius: 6px; max-width: 48%; height: auto; }
+.tag { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 8px; margin-right: 4px; margin-top: 4px; }
+.tag-history { background: #e8d5f5; color: #7b2fbe; }
+.tag-market { background: #d5eef5; color: #1a7a9b; }
+.tag-medium { background: #f5e8d5; color: #9b6a1a; }
+.medium-section { background: #fffdf7; border: 1px dashed #d4a84b; border-radius: 12px; padding: 14px; margin-bottom: 16px; }
+.medium-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.medium-desc { font-size: 13px; color: #555; }
+.movement-card { background: #f8f4ff; border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+.movement-card:last-child { margin-bottom: 0; }
+.movement-name { font-size: 14px; font-weight: 700; color: #5a2d82; }
+.movement-period { font-size: 11px; color: #999; }
+.movement-desc { font-size: 13px; color: #444; margin-top: 4px; }
+.movement-artists { font-size: 12px; color: #7b5ea7; margin-top: 4px; }
+.tip-box { background: #f0f7f0; border-radius: 12px; padding: 14px; margin-bottom: 16px; }
+.tip-title { font-size: 14px; font-weight: 700; color: #2e7d32; margin-bottom: 6px; }
+.tip-text { font-size: 13px; color: #444; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { font-size: 13px; padding: 6px 0; border-bottom: 1px solid #f0ebe3; display: flex; align-items: flex-start; gap: 8px; }
+.checklist li:last-child { border: none; }
+.check { width: 18px; height: 18px; border: 2px solid #ccc; border-radius: 4px; flex-shrink: 0; margin-top: 1px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.check.checked { background: #d4a84b; border-color: #d4a84b; color: #fff; }
+.notes-area { width: 100%; border: 1px solid #e0d8cc; border-radius: 10px; padding: 12px; font-size: 13px; font-family: inherit; min-height: 100px; resize: vertical; background: #fffef9; }
+.divider { height: 1px; background: #e8e0d4; margin: 12px 0; }
+.portrait-float { float: right; width: 80px; border-radius: 8px; margin: 0 0 8px 10px; }
+.clearfix::after { content: ""; display: table; clear: both; }
+footer { text-align: center; color: #bbb; font-size: 11px; padding: 16px 0 32px; }
+.img-caption { font-size: 11px; color: #999; text-align: center; margin-top: 2px; font-style: italic; }
+</style>
+</head>
+<body>
+<h1>🎨 胡志明美术馆</h1>
+<p class="subtitle">Bảo tàng Mỹ thuật TP. HCM · 97A Phó Đức Chính, Q.1<br>看展备注 · 2026.02.22</p>
+
+<!-- 楼层导览 -->
+<div class="section">
+  <div class="section-title">🏛 楼层概览</div>
+  <div style="font-size:13px; color:#555;">
+    <p><span class="floor-tag">1F</span> 商业画廊 + 部分现当代作品</p>
+    <p style="margin-top:6px"><span class="floor-tag">2F</span> 越南现当代艺术核心馆藏（油画·漆画·丝绸画）</p>
+    <p style="margin-top:6px"><span class="floor-tag">3F</span> 古代艺术：占婆雕塑 + 扶南(Óc Eo)遗物 + 佛教艺术</p>
+  </div>
+</div>
+
+<!-- 越南现当代艺术流派 -->
+<div class="section">
+  <div class="section-title">🌊 越南现当代艺术重要流派</div>
+
+  <div class="movement-card">
+    <div class="movement-name">印度支那美术学院派 EBAI</div>
+    <div class="movement-period">1925–1945</div>
+    <div class="movement-desc">由法国画家Victor Tardieu创办于河内，是越南现代艺术的起点。引入油画、透视法、写生等西方技法，同时鼓励学生探索本土媒介（漆画、丝绸画）。课程模仿巴黎美院但强调"回归本土传统的深层灵感"。</div>
+    <div class="movement-artists">核心：Tô Ngọc Vân, Nguyễn Gia Trí, Nguyễn Phan Chánh, Lê Phổ, Mai Trung Thứ, Trần Văn Cẩn</div>
+  </div>
+
+  <div class="movement-card">
+    <div class="movement-name">巴黎越侨画派 École de Paris vietnamienne</div>
+    <div class="movement-period">1937–2000s</div>
+    <div class="movement-desc">EBAI毕业后旅居法国的四位核心艺术家。将越南题材（女性、儿童、乡村）与巴黎画派风格融合，在国际市场获得极大成功。是当今拍卖市场上越南艺术最高价的来源。</div>
+    <div class="movement-artists">四大旅法画家：Lê Phổ, Mai Trung Thứ, Vũ Cao Đàm, Lê Thị Lựu</div>
+  </div>
+
+  <div class="movement-card">
+    <div class="movement-name">越南"四大家" Tứ Kiệt</div>
+    <div class="movement-period">1930s–1950s</div>
+    <div class="movement-desc">越南现代美术公认的四位奠基人，代表油画、漆画两大媒介的最高成就，同时是EBAI的教学骨干。</div>
+    <div class="movement-artists">Nguyễn Gia Trí（漆画）, Tô Ngọc Vân（油画）, Trần Văn Cẩn（油画/漆画）, Nguyễn Tường Lân</div>
+  </div>
+
+  <div class="movement-card">
+    <div class="movement-name">抗战现实主义 / 革命美术</div>
+    <div class="movement-period">1945–1975</div>
+    <div class="movement-desc">印度支那战争和越战期间，北越艺术家放弃浪漫风格转向服务革命的写实主义。Tô Ngọc Vân宣称"1945年法式艺术死了，1946年传统从此开始"。创作以战士、农民、建设为题材。</div>
+    <div class="movement-artists">Tô Ngọc Vân, Nguyễn Sáng, Trần Văn Cẩn, Huỳnh Phương Đông</div>
+  </div>
+
+  <div class="movement-card">
+    <div class="movement-name">河内现代主义 / "人文-佳作"运动</div>
+    <div class="movement-period">1954–1988</div>
+    <div class="movement-desc">1957年Nhân Văn事件后，一批追求艺术自由的画家遭到压制。Bùi Xuân Phái被解除教职、禁展近30年，却创作出最具辨识度的河内老街系列。受毕加索、马蒂斯、夏加尔影响。</div>
+    <div class="movement-artists">Bùi Xuân Phái, Nguyễn Tư Nghiêm, Nguyễn Sáng</div>
+  </div>
+
+  <div class="movement-card">
+    <div class="movement-name">革新开放后的当代艺术 Đổi Mới Art</div>
+    <div class="movement-period">1986至今</div>
+    <div class="movement-desc">1986年经济改革后，装置、行为、影像等新媒介涌现，胡志明市成为与河内并列的当代艺术中心。一楼商业画廊可观察当下市场面貌。</div>
+    <div class="movement-artists">关注：Dinh Q. Lê, The Propeller Group, Trần Lương, Nguyễn Mạnh Hùng</div>
+  </div>
+</div>
+
+<!-- 必看媒介 -->
+<div class="medium-section">
+  <div class="medium-title">🖌 越南独有媒介：漆画 Sơn Mài</div>
+  <div class="medium-desc">用Son树脂多层叠加，制作数月。EBAI时期Joseph Inguimberty参观文庙后受启发，鼓励学生将漆器工艺升级为fine art。注意观察层次感、光泽度、以及如何用多层漆实现油画般的透视与色彩变化。</div>
+</div>
+<div class="medium-section">
+  <div class="medium-title">🧵 丝绸画 Tranh Lụa</div>
+  <div class="medium-desc">以胶彩（gouache）在丝绸上揉擦着色，不同于中日水墨渲染。融合法式构图原则（透视、三角形、明暗对比）与东方书法性笔触，色调温柔朦胧。</div>
+</div>
+
+<!-- 重点艺术家 + 代表作 + 图片 -->
+<div class="section">
+  <div class="section-title">⭐ 重点艺术家与作品</div>
+
+  <!-- 阮嘉智 -->
+  <div class="artist-card clearfix">
+    <div class="artist-name">阮嘉智 <span class="artist-name-vn">Nguyễn Gia Trí (1908–1993)</span></div>
+    <div class="artist-meta">"四大家"之一 · 漆画之父 · EBAI 1932级</div>
+    <div class="artist-desc">将漆画从工艺品升级为fine art的关键人物。用多层漆实现西方透视和色彩无限变化，融合Art Nouveau与越南风情。早期也为杂志画政治讽刺漫画批评殖民统治。</div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 《北中南春园》Vườn Xuân Bắc Trung Nam (1989)</div>
+      <div class="work-note">漆画巨作，<strong>现藏于本馆🔴</strong>。描绘越南三个地区的春日景象，少女们在花园中嬉戏。是其晚年的集大成之作，也是本馆镇馆级作品。注意金色漆层与多层透叠产生的深度感。</div>
+      <img class="work-img" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Vuon_Xuan_Bac_Trung_Nam.jpg" alt="Vườn Xuân Bắc Trung Nam" loading="lazy">
+      <div class="img-caption">《北中南春园》漆画 · 胡志明美术馆藏</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 《少女与风景》Thiếu nữ và phong cảnh</div>
+      <div class="work-note">漆画双面作品：正面"野芋"，背面"花园中的少女"。一件作品两种构图，展现漆画精细艺术的可能性。</div>
+      <div class="work-img-row">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Painting_Thieu_nu_va_phong_canh_of_Nguyen_Gia_Tri_%28front_side%29.jpg" alt="正面：野芋" loading="lazy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Painting_Thieu_nu_va_phong_canh_of_Nguyen_Gia_Tri_%28back_side%29.jpg" alt="背面：花园少女" loading="lazy">
+      </div>
+      <div class="img-caption">左：正面"野芋" · 右：背面"花园中的少女"</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 《春游》Playing in Spring</div>
+      <div class="work-note">纸上素描，展现构图能力和人物动态的把握。</div>
+      <img class="work-img" src="https://upload.wikimedia.org/wikipedia/commons/1/12/Nguyen_Gia_Tri_Sping.jpg" alt="春游素描" loading="lazy">
+    </div>
+
+    <div class="work-item">
+      <div class="work-title">📰 讽刺漫画：Xã Xệ 与 Lý Toét</div>
+      <div class="work-note">为Phong Hóa和Ngày Nay杂志创作的讽刺漫画角色。批评法国殖民统治，展现其另一面——不只是漆画大师，也是社会评论者。</div>
+      <img class="work-img" src="https://upload.wikimedia.org/wikipedia/commons/5/5f/X%C3%A3-X%E1%BB%87_et_L%C3%BD-To%C3%A9t.jpg" alt="Xã Xệ et Lý Toét漫画" loading="lazy">
+      <div class="img-caption">漫画角色 Xã Xệ 与 Lý Toét</div>
+    </div>
+    <span class="tag tag-history">美术史·里程碑</span><span class="tag tag-market">"四大家"</span><span class="tag tag-medium">漆画</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 苏玉云 -->
+  <div class="artist-card clearfix">
+    <img class="portrait-float" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Portrait_of_T%C3%B4_Ng%E1%BB%8Dc_V%C3%A2n.png" alt="Tô Ngọc Vân肖像" loading="lazy">
+    <div class="artist-name">苏玉云 <span class="artist-name-vn">Tô Ngọc Vân (1906–1954)</span></div>
+    <div class="artist-meta">"四大家"之一 · EBAI教授/校长 · 胡志明奖 · 牺牲于奠边府</div>
+    <div class="artist-desc">越南现代油画奠基者。前期"诗意现实主义"描绘理想化女性——线性透视中的封闭空间，平涂色块与理想化人物；1945年后激进转向革命现实主义，将美术学院迁至越北抗战根据地。水星上有以他命名的陨石坑。</div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 《晚香玉旁的少女》Thiếu nữ bên hoa huệ (1943)</div>
+      <div class="work-note">其最著名代表作，越南美术的标志性图像。白衣少女侧身凝视花瓶中的百合，法式学院技法与东方审美的完美融合。"诗意现实主义"的巅峰之作。</div>
+      <img class="work-img" src="https://upload.wikimedia.org/wikipedia/commons/3/35/To_Ngoc_Van_thieu_nu_ben_hoa_hue.jpg" alt="晚香玉旁的少女" loading="lazy">
+      <div class="img-caption">《晚香玉旁的少女》1943 · 油画 · 越南国家美术馆藏</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 《两位少女与婴儿》Deux jeunes filles et un enfant (1944)</div>
+      <div class="work-note">典型的"诗意现实主义"——封闭空间中的理想化女性，平涂色块与柔和线条。</div>
+      <img class="work-img" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Hai_thieu_nu_va_em_be.JPG" alt="两位少女与婴儿" loading="lazy">
+      <div class="img-caption">《两位少女与婴儿》1944 · 油画</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 《胡主席在北部府工作》(1946)</div>
+      <div class="work-note">转向后的革命现实主义代表。对比前面两幅作品，可以清晰看到风格的剧烈断裂——从唯美理想主义到朴素写实。</div>
+      <img class="work-img" src="https://upload.wikimedia.org/wikipedia/commons/e/ef/T%C3%B4_Ng%E1%BB%8Dc_V%C3%A2n_-_H%E1%BB%93_Ch%E1%BB%A7_T%E1%BB%8Bch_l%C3%A0m_vi%E1%BB%87c_t%E1%BA%A1i_B%E1%BA%AFc_B%E1%BB%99_Ph%E1%BB%A7_%281946%29.jpg" alt="胡主席在北部府工作" loading="lazy">
+      <div class="img-caption">《胡主席在北部府工作》1946 · 油画 — 对比上方作品感受风格断裂</div>
+    </div>
+    <span class="tag tag-history">美术史·奠基</span><span class="tag tag-market">"四大家"</span><span class="tag tag-medium">油画</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 黎普 -->
+  <div class="artist-card clearfix">
+    <img class="portrait-float" src="https://upload.wikimedia.org/wikipedia/commons/4/46/Vietnamese_Painter_Le_Pho.jpg" alt="Lê Phổ肖像" loading="lazy">
+    <div class="artist-name">黎普 <span class="artist-name-vn">Lê Phổ (1907–2001)</span></div>
+    <div class="artist-meta">旅法四杰之一 · 巴黎画派 · Findlay画廊代理</div>
+    <div class="artist-desc">EBAI首届毕业生，1937年赴巴黎参加世博会后终身定居法国。创作分三期：<strong>河内时期</strong>（越南风景怀旧）→ <strong>Romanet时期</strong>（法国画商推广，至1960s）→ <strong>Findlay时期</strong>（1963后，大量油画，美国市场）。以修长女性形象著称，融合超现实主义线条与东方意境。其子Pierre Le-Tan是著名插画家（New Yorker封面）。</div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 早期丝绸画</div>
+      <div class="work-note">类似"圣母哺乳"的三角构图，将文艺复兴经典母题移植到越南女性形象中。丝绸的朦胧质感与法式构图的结合是他早期的标志。</div>
+    </div>
+    <div class="work-item">
+      <div class="work-title">🖼 Findlay时期油画（1963后）</div>
+      <div class="work-note">最具辨识度的风格：越南修长女性环绕花丛与花园，色彩明丽饱满。这一时期作品在Christie's/Sotheby's东南亚拍卖中频繁出现，成交价可达百万美元。</div>
+    </div>
+    <div class="work-item">
+      <div class="work-title">💡 2025巴黎大展</div>
+      <div class="work-note">2025年巴黎举办了纪念亚洲巴黎画派艺术家的展览，Lê Phổ是核心人物之一。标志着国际学术界对这批"被他者化"的亚洲艺术家的重新评价。</div>
+    </div>
+    <span class="tag tag-history">美术史</span><span class="tag tag-market">拍卖百万$级</span><span class="tag tag-medium">丝绸画·油画</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 梅忠恕 -->
+  <div class="artist-card clearfix">
+    <img class="portrait-float" src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Mai_Trung_Th%E1%BB%A9_1942_%28cropped%29.jpg" alt="Mai Trung Thứ肖像" loading="lazy">
+    <div class="artist-name">梅忠恕 <span class="artist-name-vn">Mai Trung Thứ (1906–1980)</span></div>
+    <div class="artist-meta">旅法四杰之一 · 丝绸画大师 · 独弦琴演奏家 · 电影人</div>
+    <div class="artist-desc">EBAI首届毕业生，1937年赴法后定居。以胶彩丝绸画为主，用揉擦法将大胆色块组织为明暗分明的区域。早期歌颂民间主题和乡村越南的纯真；旅法后以忧郁美丽的女性形象闻名。个展："Mai Thu的孩子们"(1964)、"Mai Thu眼中的女性"(1967)、"Mai Thu的诗意世界"(1980)。也是独弦琴（đàn bầu）专家，曾拍摄胡志明1946年访巴黎纪录片。</div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 儿童题材丝绸画系列</div>
+      <div class="work-note">他最具市场价值的品类。<strong>2021年Christie's HK一幅作品成交超$3.1M</strong>，创越南艺术拍卖纪录。画面中独特的色块分区法——大面积平涂与精细的面部描绘形成张力。</div>
+    </div>
+    <div class="work-item">
+      <div class="work-title">🖼 女性肖像系列</div>
+      <div class="work-note">"忧郁而美丽的女性"是其招牌——丝绸的朦胧质感与人物的哀愁气质高度契合。与Lê Phổ的明丽女性形成对比。</div>
+    </div>
+    <div class="work-item">
+      <div class="work-title">🔎 看展线索</div>
+      <div class="work-note">他亲手制作画框，对展陈极度讲究。如果看到他的作品注意画框——这是他完美主义的体现。</div>
+    </div>
+    <span class="tag tag-history">美术史</span><span class="tag tag-market">拍卖$3M+</span><span class="tag tag-medium">丝绸画</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 武高谈 -->
+  <div class="artist-card clearfix">
+    <img class="portrait-float" src="https://upload.wikimedia.org/wikipedia/commons/4/41/V%C5%A9_Cao_%C4%90%C3%A0m_painting_at_easel_in_the_countryside_of_Hanoi%2C_circa_1926-27.jpg" alt="Vũ Cao Đàm写生" loading="lazy">
+    <div class="artist-name">武高谈 <span class="artist-name-vn">Vũ Cao Đàm (1908–2000)</span></div>
+    <div class="artist-meta">旅法四杰之一 · 雕塑→绘画 · 天主教家庭</div>
+    <div class="artist-desc">EBAI 1926级，最初专攻雕塑（学校雕塑系仅两名学生之一）。在校期间创作大量青铜胸像，包括为恩师Victor Tardieu所作胸像。1931年获奖学金赴法参加殖民博览会后再未回越南。后转向绘画，融合立体主义结构与东方水墨气韵。其父是河内翻译学校创始人，精通汉学与法语。</div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 青铜胸像系列（1927–1930）</div>
+      <div class="work-note">《少女头像》(1927)、《年轻农妇》(1927)、《Victor Tardieu胸像》(1928)、《戴官帽的男子头像》(1930)。如本馆有雕塑作品值得特别留意——他是EBAI唯一的重要雕塑家。</div>
+    </div>
+    <div class="work-item">
+      <div class="work-title">🖼 旅法时期绘画</div>
+      <div class="work-note">越南女性与风景题材，用立体主义的块面结构处理，色调温润。市场上与Lê Phổ同级别。</div>
+    </div>
+    <span class="tag tag-history">美术史</span><span class="tag tag-market">拍卖活跃</span><span class="tag tag-medium">雕塑·油画</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 阮潘正 -->
+  <div class="artist-card">
+    <div class="artist-name">阮潘正 <span class="artist-name-vn">Nguyễn Phan Chánh (1892–1984)</span></div>
+    <div class="artist-meta">丝绸画先驱 · EBAI首届 · 年龄最长的学生</div>
+    <div class="artist-desc">入学时已33岁，是EBAI首届中年龄最大的学生。将西方构图原则与东方书法/水墨传统融合，开创越南丝绸画作为独立现代艺术媒介的地位。风格朴素温暖，以乡村生活和儿童为主题。</div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 《棋盘游戏》Chơi ô ăn quan (1931)</div>
+      <div class="work-note">丝绸画。1931年巴黎国际殖民博览会展出并获好评，确立丝绸画作为越南现代艺术表达的里程碑作品。描绘儿童玩越南传统棋盘游戏"ô ăn quan"的场景。注意构图的西方透视与笔触的东方韵味之间的张力。</div>
+      <img class="work-img" src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Nguy%E1%BB%85n_Phan_Ch%C3%A1nh%2C_Ch%C6%A1i_%C3%B4_%C4%83n_quan%2C_1931.jpg" alt="Chơi ô ăn quan" loading="lazy">
+      <div class="img-caption">《棋盘游戏》1931 · 丝绸画 · 越南国家美术馆藏</div>
+    </div>
+    <span class="tag tag-history">美术史·先驱</span><span class="tag tag-market">拍卖有成交</span><span class="tag tag-medium">丝绸画</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 裴春派 -->
+  <div class="artist-card clearfix">
+    <img class="portrait-float" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Bui_Xuan_Phai_image.jpg" alt="Bùi Xuân Phái" loading="lazy">
+    <div class="artist-name">裴春派 <span class="artist-name-vn">Bùi Xuân Phái (1920–1988)</span></div>
+    <div class="artist-meta">河内老街画家 · 胡志明奖(1996) · 来自金黄版画村</div>
+    <div class="artist-desc">越南最知名的现代画家。受毕加索、马蒂斯、夏加尔深刻影响。EBAI 1941级（因1945年革命未完成五年课程）。1957年因支持"人文-佳作"运动争取政治文化自由，被解除教职、禁止公开展览近30年。在困窘中用一切可得材料作画——画布、纸、木板甚至报纸。直到1984年才获准首次个展。</div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 《河内老街》Phố cổ Hà Nội 系列 (1950s–1980s)</div>
+      <div class="work-note">其最标志性的系列。以粗犷轮廓线、灰褐沉郁色调描绘河内36行街的老屋与街巷。传达记忆、怀旧与忧伤。<strong>"Phố Phái"（派的街）</strong>已成为越南艺术界的专有名词。越南本土市场最受追捧的品牌。</div>
+    </div>
+    <div class="work-item">
+      <div class="work-title">🖼 嘲剧（Chèo）演员与乐师系列</div>
+      <div class="work-note">描绘越南传统戏曲的表演者。线条大胆表现性强，受马蒂斯影响但完全越南化。</div>
+    </div>
+    <div class="work-item">
+      <div class="work-title">🖼 裸体、静物、乡村系列</div>
+      <div class="work-note">展现其题材的广度。无论画什么都"深刻表达越南灵魂、人性、对自然的爱、忧伤与苦难"。</div>
+    </div>
+    <span class="tag tag-history">美术史</span><span class="tag tag-market">越南市场顶流</span><span class="tag tag-medium">油画·综合材料</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 陈文谨 -->
+  <div class="artist-card">
+    <div class="artist-name">陈文谨 <span class="artist-name-vn">Trần Văn Cẩn (1910–1994)</span></div>
+    <div class="artist-meta">"四大家"之一 · EBAI毕业生</div>
+    <div class="artist-desc">油画与漆画双修，北越美术体系核心人物。从学院派的精致写实到社会主义现实主义的转变，映射了越南整一代艺术家的命运。</div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 学院时期肖像与风景</div>
+      <div class="work-note">早期作品展示EBAI教育的扎实功底——法式写实技法的越南化运用。</div>
+    </div>
+    <div class="work-item">
+      <div class="work-title">🖼 革命时期漆画</div>
+      <div class="work-note">将漆画用于革命题材——传统媒介承载意识形态内容的有趣案例，也是研究"媒介政治性"的好材料。</div>
+    </div>
+    <span class="tag tag-history">美术史·"四大家"</span><span class="tag tag-medium">油画·漆画</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 黎氏律 -->
+  <div class="artist-card">
+    <div class="artist-name">黎氏律 <span class="artist-name-vn">Lê Thị Lựu (1911–1988)</span></div>
+    <div class="artist-meta">旅法四杰中唯一女性 · EBAI 1927级</div>
+    <div class="artist-desc">越南首批女性现代画家。与Lê Phổ、Mai Trung Thứ、Vũ Cao Đàm同为旅法核心群体。母子题材温柔细腻，近年市场关注度持续上升，性别叙事为其增添了新的art historical价值。</div>
+
+    <div class="work-item">
+      <div class="work-title">🖼 母子系列</div>
+      <div class="work-note">其最具代表性的题材。温暖色调，柔和笔触，与Lê Phổ的风格有对话关系但更私密。作为旅法四杰中唯一的女性声音，她的作品提供了独特的性别视角。</div>
+    </div>
+    <span class="tag tag-history">美术史</span><span class="tag tag-market">市场上升中</span><span class="tag tag-medium">油画·丝绸画</span>
+  </div>
+</div>
+
+<!-- 古代艺术 -->
+<div class="section">
+  <div class="section-title">🗿 三楼古代艺术看点</div>
+  <div style="font-size:13px; color:#555;">
+    <p><strong>占婆 Champa 雕塑</strong> — 印度教/佛教混合风格，越南中南部古国（2–17世纪）遗产。石雕多为湿婆、毗湿奴像，风格介于印度笈多王朝与吴哥之间。</p>
+    <p style="margin-top:8px"><strong>扶南 Óc Eo 遗物</strong> — 湄公河三角洲古文明（1–7世纪），考古发现罗马金币和波斯器物，证明极早期跨洲贸易。东南亚海上丝绸之路关键节点。</p>
+    <p style="margin-top:8px"><strong>佛教艺术</strong> — 大乘佛教造像，可对比中国南方和东南亚其他地区传统。</p>
+  </div>
+</div>
+
+<!-- 看展checklist -->
+<div class="section">
+  <div class="section-title">✅ 看展清单</div>
+  <ul class="checklist" id="checklist">
+    <li><div class="check" onclick="toggle(this)"></div><strong>🔴 阮嘉智《北中南春园》</strong>— 本馆镇馆漆画，必看</li>
+    <li><div class="check" onclick="toggle(this)"></div>漆画展厅 — 观察多层漆的透视感与光泽</li>
+    <li><div class="check" onclick="toggle(this)"></div>丝绸画 — 揉擦法 vs 中日渲染法</li>
+    <li><div class="check" onclick="toggle(this)"></div>旅法四杰作品（Lê Phổ/Mai Thứ/Vũ Cao Đàm/Lê Thị Lựu）</li>
+    <li><div class="check" onclick="toggle(this)"></div>苏玉云油画 — 前后期风格对比</li>
+    <li><div class="check" onclick="toggle(this)"></div>裴春派河内老街系列</li>
+    <li><div class="check" onclick="toggle(this)"></div>三楼占婆雕塑</li>
+    <li><div class="check" onclick="toggle(this)"></div>Óc Eo遗物 — 罗马/波斯贸易证据</li>
+    <li><div class="check" onclick="toggle(this)"></div>一楼商业画廊 — 当下市场在卖什么</li>
+    <li><div class="check" onclick="toggle(this)"></div>拍建筑 — 1929-34法式殖民别墅（华人Hua家族）</li>
+  </ul>
+</div>
+
+<!-- 研究笔记 -->
+<div class="section">
+  <div class="section-title">📝 现场笔记</div>
+  <textarea class="notes-area" placeholder="在这里记录看展感受、发现的作品、想法..."></textarea>
+</div>
+
+<!-- Tips -->
+<div class="tip-box">
+  <div class="tip-title">💡 研究视角提示</div>
+  <div class="tip-text">
+    <p>• <strong>艺术市场：</strong>旅法越南艺术家近年在Christie's/Sotheby's东南亚专场表现强劲，Mai Trung Thứ的$3.1M纪录标志越南艺术进入国际蓝筹视野</p>
+    <p style="margin-top:4px">• <strong>殖民现代性：</strong>EBAI vs 中国上海美专/国立艺专——两条殖民/半殖民语境下的艺术现代化路径，高度可比</p>
+    <p style="margin-top:4px">• <strong>媒介创新：</strong>漆画craft→fine art的转化，对标中国水墨的现代化叙事</p>
+    <p style="margin-top:4px">• <strong>离散与市场：</strong>旅法群体的"离散艺术家"身份如何转化为市场溢价？与赵无极/朱德群的巴黎叙事有何异同？</p>
+    <p style="margin-top:4px">• <strong>知识图谱：</strong>EBAI是完美的知识图谱节点——师承（Tardieu→学生）、媒介谱系、地理流散（河内→巴黎/越北）、市场网络</p>
+  </div>
+</div>
+
+<footer>🫐 Blubo for Iris · 胡志明美术馆看展备注 v3 (含图片)</footer>
+
+<script>
+function toggle(el) {
+  el.classList.toggle('checked');
+  el.textContent = el.classList.contains('checked') ? '✓' : '';
+}
+</script>
+
+</body>
+</html>

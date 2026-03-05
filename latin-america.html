@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌎 拉美艺术在中国：展览与交流（2004–2026）</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif; background: #f3efe8; color: #2d2d2d; line-height: 1.7; padding: 16px; max-width: 520px; margin: 0 auto; }
+h1 { font-size: 20px; text-align: center; padding: 20px 0 4px; }
+.subtitle { text-align: center; color: #888; font-size: 12px; margin-bottom: 20px; }
+.toc { background: #fff; border-radius: 14px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.toc a { display: block; font-size: 13px; color: #6b4c1a; text-decoration: none; padding: 4px 0; border-bottom: 1px solid #f0ebe3; }
+.toc a:last-child { border: none; }
+.section { background: #fff; border-radius: 14px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.section-title { font-size: 15px; font-weight: 700; color: #b8860b; margin-bottom: 10px; cursor: pointer; }
+.section-title::before { content: '▸ '; font-size: 12px; }
+.section-title.open::before { content: '▾ '; }
+.collapsible { display: none; }
+.collapsible.open { display: block; }
+.series-header { background: #f8f0e0; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; }
+.series-name { font-size: 14px; font-weight: 700; color: #8b6914; }
+.series-desc { font-size: 12px; color: #666; margin-top: 4px; }
+.exhibit-card { border-left: 3px solid #d4a84b; padding: 8px 0 8px 12px; margin-bottom: 10px; font-size: 12.5px; }
+.exhibit-year { font-weight: 700; color: #b8860b; font-size: 13px; }
+.exhibit-venue { color: #666; font-size: 11.5px; }
+.exhibit-title { font-weight: 600; color: #2d2d2d; margin: 2px 0; }
+.exhibit-details { color: #555; }
+.exhibit-tag { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 6px; margin-right: 3px; margin-top: 3px; }
+.tag-gov { background: #fde8e8; color: #c0392b; }
+.tag-gallery { background: #e8f0fd; color: #2980b9; }
+.tag-biennial { background: #e8fde8; color: #27ae60; }
+.tag-unverified { background: #f0f0f0; color: #999; }
+.tag-fair { background: #f5e8fd; color: #8e44ad; }
+.table-wrap { overflow-x: auto; margin: 8px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+th { background: #f8f0e0; color: #8b6914; text-align: left; padding: 6px 8px; font-weight: 600; position: sticky; top: 0; }
+td { padding: 6px 8px; border-bottom: 1px solid #f0ebe3; vertical-align: top; }
+tr:hover { background: #faf7f2; }
+.person-card { background: #faf7f2; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; font-size: 12px; }
+.person-name { font-weight: 600; color: #6b4c1a; }
+.person-role { color: #888; font-size: 11px; }
+.person-desc { color: #555; margin-top: 2px; }
+.trend-item { padding: 8px 0; border-bottom: 1px solid #f0ebe3; font-size: 12.5px; }
+.trend-item:last-child { border: none; }
+.trend-title { font-weight: 600; color: #5a2d82; }
+.trend-desc { color: #555; margin-top: 2px; }
+.tip-box { background: #f0f7f0; border-radius: 12px; padding: 14px; margin-bottom: 16px; font-size: 12.5px; }
+.tip-title { font-weight: 700; color: #2e7d32; margin-bottom: 6px; }
+.tip-text { color: #444; }
+.warn { color: #e67e22; font-size: 10px; }
+.timeline { position: relative; padding-left: 20px; }
+.timeline::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: #e8dcc8; }
+.tl-item { position: relative; padding-bottom: 12px; }
+.tl-item::before { content: ''; position: absolute; left: -17px; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: #d4a84b; }
+.tl-year { font-weight: 700; color: #b8860b; font-size: 13px; }
+.tl-content { font-size: 12.5px; color: #444; }
+.search-box { width: 100%; padding: 10px 12px; border: 1px solid #e0d8cc; border-radius: 10px; font-size: 13px; font-family: inherit; background: #fffef9; margin-bottom: 12px; }
+.filter-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.filter-btn { font-size: 11px; padding: 3px 10px; border-radius: 12px; border: 1px solid #d4a84b; background: #fff; color: #8b6914; cursor: pointer; }
+.filter-btn.active { background: #d4a84b; color: #fff; }
+footer { text-align: center; color: #bbb; font-size: 11px; padding: 16px 0 32px; }
+</style>
+</head>
+<body>
+<h1>🌎 拉美艺术在中国</h1>
+<p class="subtitle">展览与文化交流综合资料 · 2004–2026<br>清华大学美术学院博士研究参考</p>
+
+<input type="text" class="search-box" id="search" placeholder="🔍 搜索展览、机构、艺术家..." oninput="filterAll()">
+
+<div class="filter-bar" id="filters">
+  <button class="filter-btn active" onclick="setFilter('all',this)">全部</button>
+  <button class="filter-btn" onclick="setFilter('gov',this)">政府交流</button>
+  <button class="filter-btn" onclick="setFilter('gallery',this)">画廊</button>
+  <button class="filter-btn" onclick="setFilter('biennial',this)">双/三年展</button>
+  <button class="filter-btn" onclick="setFilter('fair',this)">博览会</button>
+</div>
+
+<!-- 目录 -->
+<div class="toc">
+  <a href="#series">📌 "拉美艺术季"系列（2013至今）</a>
+  <a href="#panama">📌 中巴友好艺术巡展</a>
+  <a href="#mexico">📌 墨西哥艺术展</a>
+  <a href="#brazil">📌 巴西艺术展</a>
+  <a href="#continua">📌 常青画廊拉美展</a>
+  <a href="#other">📌 其他重要展览</a>
+  <a href="#culture-year">📌 官方"文化年"项目</a>
+  <a href="#biennial">📌 双/三年展中的拉美</a>
+  <a href="#fair">📌 艺博会中的拉美</a>
+  <a href="#people">📌 主要推手</a>
+  <a href="#research">📌 研究线索</a>
+</div>
+
+<!-- 拉美艺术季 -->
+<div class="section" id="series">
+  <div class="section-title open" onclick="toggle(this)">"相约北京·拉美艺术季" / "异彩共生" 系列</div>
+  <div class="collapsible open">
+    <div class="series-header">
+      <div class="series-name">中国最系统的拉美视觉艺术平台</div>
+      <div class="series-desc">文旅部主办 · 中国对外文化集团承办 · 2013年至今<br>主场地：中华世纪坛世界艺术馆<br>累计300+位拉美艺术家参展</div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item" data-cat="gov" data-text="2013 美美与共 拉美现代艺术展 中华世纪坛">
+        <div class="tl-year">2013 · 第一届</div>
+        <div class="tl-content">
+          <strong>"美美与共——拉美现代艺术展"</strong><br>
+          📍 北京·中华世纪坛世界艺术馆<br>
+          标志着拉美视觉艺术在中国进入系统性展示阶段
+          <div><span class="exhibit-tag tag-gov">相约北京</span></div>
+        </div>
+      </div>
+      <div class="tl-item" data-cat="gov" data-text="2014 美美与共 拉美现代艺术展 中华世纪坛 中国美术学院 杭州 巴西 古巴 厄瓜多尔 墨西哥 秘鲁 驻留">
+        <div class="tl-year">2014 · 第二届</div>
+        <div class="tl-content">
+          <strong>"美美与共" + 客座艺术家驻留成果展</strong><br>
+          📍 北京·中华世纪坛 / 杭州·中国美术学院<br>
+          5国（巴西、古巴、厄瓜多尔、墨西哥、秘鲁）艺术家赴苏州、周庄、西湖、灵隐寺采风
+          <div><span class="exhibit-tag tag-gov">相约北京</span><span class="exhibit-tag tag-gov">艺术家驻留</span></div>
+        </div>
+      </div>
+      <div class="tl-item" data-cat="gov" data-text="2015 美美与共 拉美及加勒比艺术展 中华世纪坛">
+        <div class="tl-year">2015 · 第三届</div>
+        <div class="tl-content">
+          <strong>"美美与共——拉美及加勒比艺术展"</strong><br>
+          📍 北京·中华世纪坛<br>
+          扩大参展国范围至加勒比地区
+          <div><span class="exhibit-tag tag-gov">相约北京</span></div>
+        </div>
+      </div>
+      <div class="tl-item" data-cat="gov" data-text="2016 拉美和加勒比艺术节 阿根廷 智利 哥斯达黎加 秘鲁 墨西哥 牙买加 中华世纪坛 谢金英">
+        <div class="tl-year">2016 · 第四届</div>
+        <div class="tl-content">
+          <strong>"拉美和加勒比艺术节视觉艺术展 2016"</strong><br>
+          📍 北京·中华世纪坛 · 5月5日–26日<br>
+          阿根廷、智利、哥斯达黎加、秘鲁、墨西哥、牙买加等国参展。文化部外联局局长谢金英出席
+          <div><span class="exhibit-tag tag-gov">相约北京</span></div>
+        </div>
+      </div>
+      <div class="tl-item" data-cat="gov" data-text="2017 异彩共生 拉美及加勒比艺术展 中华世纪坛">
+        <div class="tl-year">2017 · 第五届</div>
+        <div class="tl-content">
+          <strong>"异彩共生——拉美及加勒比艺术展"</strong><br>
+          📍 北京·中华世纪坛<br>
+          "异彩共生"成为该系列固定品牌名称
+          <div><span class="exhibit-tag tag-gov">相约北京</span></div>
+        </div>
+      </div>
+      <div class="tl-item" data-cat="gov" data-text="2018 异彩共生 7国 88幅 阿根廷 厄瓜多尔 圭亚那 巴拿马 特立尼达和多巴哥 墨西哥 委内瑞拉 中华世纪坛 绘画 摄影">
+        <div class="tl-year">2018 · 第六届</div>
+        <div class="tl-content">
+          <strong>第六届"异彩共生——拉美及加勒比艺术展"</strong><br>
+          📍 北京·中华世纪坛<br>
+          7国7位艺术家、88幅作品（绘画与摄影）。呈现殖民历史后的本土现代艺术发展
+          <div><span class="exhibit-tag tag-gov">相约北京</span></div>
+        </div>
+      </div>
+      <div class="tl-item" data-cat="gov" data-text="2019 美美与共 48件 绘画 雕塑 装置 中华世纪坛 中国世界艺术博物馆">
+        <div class="tl-year">2019 · 第七届</div>
+        <div class="tl-content">
+          <strong>"美美与共——拉美及加勒比艺术展"</strong><br>
+          📍 北京·中华世纪坛（中国世界艺术博物馆）· 6月<br>
+          48件作品：绘画、雕塑、装置
+          <div><span class="exhibit-tag tag-gov">相约北京</span></div>
+        </div>
+      </div>
+      <div class="tl-item" data-cat="gov" data-text="2020 2021 疫情 COVID 停办">
+        <div class="tl-year">2020–2021</div>
+        <div class="tl-content" style="color:#999;">因COVID-19疫情停办或转线上</div>
+      </div>
+      <div class="tl-item" data-cat="gov" data-text="2022 美美与共 回顾展 西安 陕西省美术博物馆 26位 55件 13国 一带一路">
+        <div class="tl-year">2022 · 恢复</div>
+        <div class="tl-content">
+          <strong>"美美与共——中拉艺术交流回顾展"</strong><br>
+          📍 西安·陕西省美术博物馆 · 9月17日<br>
+          26位艺术家、55件作品、13个拉美国家。纳入"一带一路"合作框架
+          <div><span class="exhibit-tag tag-gov">一带一路</span></div>
+        </div>
+      </div>
+      <div class="tl-item" data-cat="gov" data-text="2025 拉美艺术季 音乐节 哥伦比亚 哥斯达黎加 巴拿马 厄瓜多尔 特立尼达和多巴哥 墨西哥">
+        <div class="tl-year">2025</div>
+        <div class="tl-content">
+          <strong>2025"拉美艺术季"</strong><br>
+          📍 北京·亚运村北投购物公园 · 9月20–21日<br>
+          含"拉美和加勒比音乐节"，6国演出团组参加
+          <div><span class="exhibit-tag tag-gov">相约北京</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 中巴友好 -->
+<div class="section" id="panama">
+  <div class="section-title" onclick="toggle(this)">中国-巴拿马友好艺术巡展（2019至今）</div>
+  <div class="collapsible">
+    <div class="exhibit-card" data-cat="gov" data-text="巴拿马 ASA基金会 薛彤 甄巍 北京师范大学 运河对画 画说巴拿马 60件 油画 水墨 2025">
+      <div class="exhibit-year">~2019–2025 持续项目</div>
+      <div class="exhibit-venue">巴拿马ASA基金会 × 北京师范大学</div>
+      <div class="exhibit-title">"跨越大洋" / "运河对画" / "画说巴拿马"</div>
+      <div class="exhibit-details">
+        推动者：薛彤（ASA基金会主席）、甄巍教授（北师大）<br>
+        以京杭大运河与巴拿马运河为文化纽带<br><br>
+        <strong>2025年10月27日</strong> 北京师范大学京师美术馆<br>
+        60余件作品（油画、水墨、综合材料）<br>
+        巴拿马驻华大使雷鸣出席<br>
+        巴方：黄莎莉、甘倬安、袁若南等；中方：卢征远、甄巍等
+      </div>
+      <div><span class="exhibit-tag tag-gov">中巴建交后文化交流</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 墨西哥 -->
+<div class="section" id="mexico">
+  <div class="section-title" onclick="toggle(this)">墨西哥艺术相关展览</div>
+  <div class="collapsible">
+    <div class="exhibit-card" data-cat="gov" data-text="2006 墨西哥现代艺术展 中国美术馆">
+      <div class="exhibit-year">2006</div>
+      <div class="exhibit-venue">北京·中国美术馆</div>
+      <div class="exhibit-title">"墨西哥现代艺术展" <span class="warn">⚠️待确认</span></div>
+    </div>
+    <div class="exhibit-card" data-cat="gov" data-text="2012 玛雅 美的语言 中国国家博物馆 墨西哥 建交40周年">
+      <div class="exhibit-year">2012</div>
+      <div class="exhibit-venue">北京·中国国家博物馆</div>
+      <div class="exhibit-title">"玛雅：美的语言" <span class="warn">⚠️</span></div>
+      <div class="exhibit-details">玛雅文明相关文物</div>
+      <div><span class="exhibit-tag tag-gov">中墨建交40周年</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 巴西 -->
+<div class="section" id="brazil">
+  <div class="section-title" onclick="toggle(this)">巴西艺术相关展览</div>
+  <div class="collapsible">
+    <div class="exhibit-card" data-cat="gov" data-text="2013 巴西 国家博物馆 建交40周年">
+      <div class="exhibit-year">2013</div>
+      <div class="exhibit-venue">北京·国家博物馆</div>
+      <div class="exhibit-title">巴西相关展览 <span class="warn">⚠️待确认</span></div>
+      <div class="exhibit-details">中巴建交近40周年</div>
+    </div>
+  </div>
+</div>
+
+<!-- 常青画廊 -->
+<div class="section" id="continua">
+  <div class="section-title" onclick="toggle(this)">常青画廊 Galleria Continua 拉美展</div>
+  <div class="collapsible">
+    <div class="series-header">
+      <div class="series-name">最早在中国系统推介拉美当代艺术的国际画廊</div>
+      <div class="series-desc">2004年入驻北京798/草场地 · 意大利画廊 · 代理多位古巴/阿根廷/委内瑞拉艺术家</div>
+    </div>
+    <div class="exhibit-card" data-cat="gallery" data-text="常青画廊 拉丁美洲夏日绘画展 Juan Araujo 委内瑞拉 Alejandro Campins 古巴 Yoan Capote Jorge Macchi 阿根廷 José Yaque 798">
+      <div class="exhibit-year">约2015–2016</div>
+      <div class="exhibit-venue">北京·常青画廊（798/草场地）</div>
+      <div class="exhibit-title">"拉丁美洲夏日绘画展"</div>
+      <div class="exhibit-details">
+        5位拉美艺术家首次在中国集体亮相：<br>
+        · Juan Araujo（委内瑞拉）<br>
+        · Alejandro Campins（古巴）<br>
+        · Yoan Capote（古巴）<br>
+        · Jorge Macchi（阿根廷）<br>
+        · José Yaque（古巴）
+      </div>
+      <div><span class="exhibit-tag tag-gallery">商业画廊</span></div>
+    </div>
+    <div class="exhibit-card" data-cat="gallery" data-text="常青画廊 古巴 Yoan Capote Alejandro Campins José Yaque 个展">
+      <div class="exhibit-year">多年持续</div>
+      <div class="exhibit-details">长期代理并举办 Yoan Capote、Alejandro Campins、José Yaque 等拉美艺术家个展</div>
+      <div><span class="exhibit-tag tag-gallery">商业画廊</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 其他重要展览 -->
+<div class="section" id="other">
+  <div class="section-title" onclick="toggle(this)">其他重要展览</div>
+  <div class="collapsible">
+    <div class="exhibit-card" data-cat="gov" data-text="2006 拉丁美洲艺术展 中国美术馆">
+      <div class="exhibit-year">2006</div>
+      <div class="exhibit-venue">北京·中国美术馆</div>
+      <div class="exhibit-title">"拉丁美洲艺术展" <span class="warn">⚠️</span></div>
+    </div>
+    <div class="exhibit-card" data-cat="gov" data-text="2009 古巴艺术展 北京 中古文化交流">
+      <div class="exhibit-year">2009</div>
+      <div class="exhibit-venue">北京</div>
+      <div class="exhibit-title">古巴艺术展 <span class="warn">⚠️</span></div>
+      <div class="exhibit-details">古巴是与中国文化交流最活跃的拉美国家之一</div>
+    </div>
+  </div>
+</div>
+
+<!-- 文化年 -->
+<div class="section" id="culture-year">
+  <div class="section-title" onclick="toggle(this)">官方"文化年"项目</div>
+  <div class="collapsible">
+    <div class="table-wrap">
+      <table>
+        <tr><th>项目</th><th>时间</th><th>背景</th></tr>
+        <tr data-cat="gov" data-text="中墨文化年 2012 建交40周年 墨西哥"><td><strong>中墨文化年</strong></td><td>2012</td><td>中墨建交40周年</td></tr>
+        <tr data-cat="gov" data-text="中巴文化节 2013 2014 巴西 建交40年"><td><strong>中巴（巴西）文化节</strong></td><td>2013–2014 <span class="warn">⚠️</span></td><td>中巴建交40年前后</td></tr>
+        <tr data-cat="gov" data-text="中拉文化交流年 2016 CELAC 拉共体"><td><strong>中拉文化交流年</strong></td><td>2016</td><td>中国-CELAC论坛框架</td></tr>
+        <tr data-cat="gov" data-text="中阿文化年 阿根廷 建交50周年 2022"><td><strong>中阿（阿根廷）</strong></td><td>2022前后 <span class="warn">⚠️</span></td><td>中阿建交50周年</td></tr>
+        <tr data-cat="gov" data-text="中智文化年 智利 建交50周年 2020"><td><strong>中智（智利）</strong></td><td>2020前后 <span class="warn">⚠️</span></td><td>中智建交50周年</td></tr>
+        <tr data-cat="gov" data-text="中古文化交流 古巴 1960 建交"><td><strong>中古（古巴）</strong></td><td>持续</td><td>1960年建交，最早建交的拉美国家</td></tr>
+        <tr data-cat="gov" data-text="中巴文化交流 巴拿马 2017 建交"><td><strong>中巴（巴拿马）</strong></td><td>2017至今</td><td>2017年中巴建交后迅速发展</td></tr>
+      </table>
+    </div>
+    <div style="margin-top:10px; font-size:12px; color:#555;">
+      <strong>多边框架：</strong><br>
+      · <strong>中国-拉共体论坛</strong>（2015首届部长级会议）<br>
+      · <strong>"一带一路"</strong>（2013至今，拉美纳入后文化交流获更多资源）<br>
+      · <strong>金砖国家</strong>（巴西创始成员，阿根廷2024加入）
+    </div>
+  </div>
+</div>
+
+<!-- 双年展 -->
+<div class="section" id="biennial">
+  <div class="section-title" onclick="toggle(this)">双/三年展中的拉美</div>
+  <div class="collapsible">
+    <div class="series-header">
+      <div class="series-name">上海双年展 · PSA</div>
+      <div class="series-desc">中国最重要的当代艺术双年展，历届均有拉美艺术家参展</div>
+    </div>
+    <div class="exhibit-card" data-cat="biennial" data-text="2018 上海双年展 第12届 禹步 Cuauhtémoc Medina 墨西哥 策展人 MUAC PSA">
+      <div class="exhibit-year">2018 · 第12届 ⭐</div>
+      <div class="exhibit-title">"禹步" · 主策展人：Cuauhtémoc Medina（墨西哥）</div>
+      <div class="exhibit-details">
+        墨西哥国立自治大学当代艺术博物馆(MUAC)馆长担任首席策展人<br>
+        <strong>→ 拉美策展力量直接主导中国重要双年展的标志性事件</strong>
+      </div>
+      <div><span class="exhibit-tag tag-biennial">上海双年展</span></div>
+    </div>
+    <div class="exhibit-card" data-cat="biennial" data-text="上海双年展 2012 重新发电 2014 社会工厂 2016 何不再问 2020 水体 2023 宇宙电影">
+      <div class="exhibit-details" style="font-size:12px; color:#888;">
+        其他各届（2012重新发电/2014社会工厂/2016何不再问/2020水体/2023宇宙电影）均有拉美参展，具体名单待补充 <span class="warn">⚠️</span>
+      </div>
+    </div>
+    <div class="exhibit-card" data-cat="biennial" data-text="北京双年展 中国美协 2003 2022 拉美 墨西哥 古巴 巴西 阿根廷 架上绘画 雕塑">
+      <div class="exhibit-year">2003–2022</div>
+      <div class="exhibit-title">中国北京国际美术双年展（第1–9届）</div>
+      <div class="exhibit-details">中国美协主办，以架上绘画和雕塑为主。墨西哥、古巴、巴西、阿根廷等多次参展</div>
+      <div><span class="exhibit-tag tag-biennial">北京双年展</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 艺博会 -->
+<div class="section" id="fair">
+  <div class="section-title" onclick="toggle(this)">艺博会中的拉美</div>
+  <div class="collapsible">
+    <div class="exhibit-card" data-cat="fair" data-text="Art Basel Hong Kong 巴塞尔 香港 Galería OMR 墨西哥 Nara Roesler 巴西 Luisa Strina kurimanzutto Galleria Continua">
+      <div class="exhibit-year">Art Basel Hong Kong · 2013至今</div>
+      <div class="exhibit-details">
+        常见拉美画廊：<br>
+        · <strong>Galería OMR</strong>（墨西哥城）<br>
+        · <strong>Nara Roesler</strong>（圣保罗/纽约）<br>
+        · <strong>Luisa Strina</strong>（圣保罗）<br>
+        · <strong>kurimanzutto</strong>（墨西哥城）<br>
+        · <strong>Galleria Continua</strong>（含拉美艺术家）<br>
+        巴西和墨西哥画廊尤为活跃
+      </div>
+      <div><span class="exhibit-tag tag-fair">Art Basel HK</span></div>
+    </div>
+    <div class="exhibit-card" data-cat="fair" data-text="西岸 West Bund ART021 拉美画廊">
+      <div class="exhibit-details" style="color:#888;">
+        西岸/ART021偶有拉美画廊参展，但数量有限 <span class="warn">⚠️</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 主要推手 -->
+<div class="section" id="people">
+  <div class="section-title" onclick="toggle(this)">主要推手：机构与人物</div>
+  <div class="collapsible">
+    <p style="font-size:12px; font-weight:600; color:#8b6914; margin-bottom:8px;">🏛 政府与机构</p>
+    <div class="person-card"><div class="person-name">文旅部国际交流与合作局</div><div class="person-desc">"拉美艺术季"主办方，最重要的政府推动力量</div></div>
+    <div class="person-card"><div class="person-name">中国对外文化集团有限公司</div><div class="person-desc">"相约北京"联合艺术节、拉美艺术季主要承办单位</div></div>
+    <div class="person-card"><div class="person-name">中华世纪坛世界艺术馆</div><div class="person-desc">"拉美艺术季"视觉艺术展主场地</div></div>
+    <div class="person-card"><div class="person-name">北京中拉文化交流中心 CICAL</div><div class="person-desc">专门中拉文化交流实体平台 · 位于北京大兴 · www.cical.cn</div></div>
+
+    <p style="font-size:12px; font-weight:600; color:#8b6914; margin: 12px 0 8px;">🎓 学术</p>
+    <div class="person-card"><div class="person-name">甄巍</div><div class="person-role">北京师范大学教授</div><div class="person-desc">中巴（巴拿马）艺术交流核心推动者</div></div>
+    <div class="person-card"><div class="person-name">Cuauhtémoc Medina</div><div class="person-role">墨西哥策展人 · MUAC馆长</div><div class="person-desc">2018年第12届上海双年展首席策展人</div></div>
+    <div class="person-card"><div class="person-name">中国美术学院</div><div class="person-desc">承办"拉美艺术季"客座艺术家驻留与成果展</div></div>
+
+    <p style="font-size:12px; font-weight:600; color:#8b6914; margin: 12px 0 8px;">🖼 画廊与民间</p>
+    <div class="person-card"><div class="person-name">常青画廊 Galleria Continua</div><div class="person-desc">2004年入驻北京，最早在中国系统代理拉美当代艺术的国际画廊</div></div>
+    <div class="person-card"><div class="person-name">薛彤</div><div class="person-role">巴拿马ASA基金会主席</div><div class="person-desc">推动"中国-巴拿马友好艺术巡展"</div></div>
+    <div class="person-card"><div class="person-name">Luis Cantillo</div><div class="person-role">哥伦比亚艺术家</div><div class="person-desc">创办《中国之友》杂志（2018），搭建中哥文化桥梁</div></div>
+  </div>
+</div>
+
+<!-- 研究线索 -->
+<div class="section" id="research">
+  <div class="section-title" onclick="toggle(this)">研究线索与建议</div>
+  <div class="collapsible">
+    <p style="font-size:12px; font-weight:600; color:#8b6914; margin-bottom:8px;">📚 一手资料</p>
+    <div style="font-size:12px; color:#555; line-height:2;">
+      · 中国对外文化集团官网/公众号（拉美艺术季历届资料）<br>
+      · 中华世纪坛展览档案（"美美与共"/"异彩共生"图录）<br>
+      · 中国美术馆展览数据库 www.namoc.cn<br>
+      · 常青画廊官网（北京空间拉美展览列表）<br>
+      · CICAL www.cical.cn<br>
+      · 上海双年展历届艺术家名单<br>
+      · Fundación Andrés Bello 网站<br>
+      · CGTN西班牙语频道中拉文化报道
+    </div>
+
+    <p style="font-size:12px; font-weight:600; color:#8b6914; margin: 12px 0 8px;">🎤 建议访谈对象</p>
+    <div style="font-size:12px; color:#555; line-height:2;">
+      · 中国对外文化集团"拉美艺术季"项目负责人<br>
+      · 常青画廊北京空间工作人员<br>
+      · 甄巍教授（北师大，中巴交流）<br>
+      · 中国美术学院"客座艺术家"项目教师<br>
+      · 墨西哥/巴西/古巴驻华使馆文化参赞<br>
+      · CICAL工作人员<br>
+      · Cuauhtémoc Medina
+    </div>
+
+    <p style="font-size:12px; font-weight:600; color:#8b6914; margin: 12px 0 8px;">📖 文献线索</p>
+    <div style="font-size:12px; color:#555; line-height:2;">
+      · CELAC-China论坛文件（文化合作章节）<br>
+      · 《美术》《美术观察》期刊展评文章<br>
+      · 各拉美国家驻华使馆文化活动年报
+    </div>
+  </div>
+</div>
+
+<div class="tip-box">
+  <div class="tip-title">⚠️ 数据说明</div>
+  <div class="tip-text">
+    标注 <span class="warn">⚠️</span> 的条目来源较弱，建议交叉验证。部分美术馆网站为JS渲染，线上核实受限。建议实地或通过机构档案补充。
+  </div>
+</div>
+
+<footer>🫐 Blubo for Iris · 拉美艺术在中国 · 2026.03</footer>
+
+<script>
+function toggle(el) {
+  el.classList.toggle('open');
+  const content = el.nextElementSibling;
+  content.classList.toggle('open');
+}
+
+let currentFilter = 'all';
+
+function setFilter(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterAll();
+}
+
+function filterAll() {
+  const q = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('[data-cat]').forEach(el => {
+    const matchCat = currentFilter === 'all' || el.dataset.cat === currentFilter;
+    const text = (el.dataset.text || '').toLowerCase() + el.textContent.toLowerCase();
+    const matchSearch = !q || text.includes(q);
+    el.style.display = (matchCat && matchSearch) ? '' : 'none';
+  });
+}
+
+// Open first section by default, collapse rest
+document.querySelectorAll('.section-title').forEach((t, i) => {
+  if (i > 0) { /* already handled in HTML */ }
+});
+</script>
+
+</body>
+</html>

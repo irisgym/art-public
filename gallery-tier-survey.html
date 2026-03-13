@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>画廊层级评估专家问卷</title>
+<style>
+:root {
+  --bg: #fafafa; --bg2: #fff; --fg: #1a1a1a; --fg2: #555; --accent: #8b0000;
+  --border: #ddd; --input-bg: #fff; --shadow: rgba(0,0,0,0.06);
+  --success: #2d7d46; --warn: #c9530a; --error: #c0392b;
+  --progress-bg: #e0e0e0; --progress-fill: #8b0000;
+}
+@media(prefers-color-scheme:dark){
+  :root {
+    --bg: #1a1a1a; --bg2: #242424; --fg: #e8e8e8; --fg2: #aaa; --accent: #e74c3c;
+    --border: #3a3a3a; --input-bg: #2a2a2a; --shadow: rgba(0,0,0,0.3);
+    --progress-bg: #333; --progress-fill: #e74c3c;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;background:var(--bg);color:var(--fg);line-height:1.7;padding:0}
+.container{max-width:800px;margin:0 auto;padding:16px}
+header{background:var(--accent);color:#fff;padding:24px 16px;text-align:center}
+header .logo{font-size:14px;letter-spacing:4px;opacity:.85;margin-bottom:4px}
+header h1{font-size:22px;font-weight:600;margin:4px 0}
+header .subtitle{font-size:13px;opacity:.8}
+.progress-bar{position:sticky;top:0;z-index:100;background:var(--progress-bg);height:6px}
+.progress-bar .fill{height:100%;background:var(--progress-fill);transition:width .3s}
+.progress-text{text-align:center;font-size:12px;color:var(--fg2);padding:8px 0;background:var(--bg);position:sticky;top:6px;z-index:99}
+section{background:var(--bg2);border:1px solid var(--border);border-radius:8px;margin:20px 0;padding:24px;box-shadow:0 1px 3px var(--shadow)}
+section h2{font-size:18px;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:8px;margin-bottom:16px}
+section h3{font-size:15px;margin:16px 0 8px}
+.note{font-size:13px;color:var(--fg2);margin:8px 0;padding:10px;background:var(--bg);border-left:3px solid var(--accent);border-radius:0 4px 4px 0}
+label{display:block;margin:12px 0 4px;font-weight:500;font-size:14px}
+input[type=text],input[type=number],input[type=email],textarea,select{
+  width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;
+  font-size:14px;background:var(--input-bg);color:var(--fg);font-family:inherit}
+textarea{resize:vertical;min-height:80px}
+.radio-group,.checkbox-group{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.radio-group label,.checkbox-group label{
+  display:flex;align-items:center;gap:6px;font-weight:400;
+  padding:6px 12px;border:1px solid var(--border);border-radius:20px;cursor:pointer;font-size:13px;
+  background:var(--input-bg);transition:all .2s}
+.radio-group label:has(input:checked),.checkbox-group label:has(input:checked){
+  border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--accent)}
+.radio-group input,.checkbox-group input{width:auto;margin:0}
+/* Weight sliders */
+.weight-row{display:flex;align-items:center;gap:8px;margin:6px 0;flex-wrap:wrap}
+.weight-row .dim-name{flex:1;min-width:120px;font-size:13px}
+.weight-row input[type=range]{flex:2;min-width:100px;accent-color:var(--accent)}
+.weight-row .val{width:50px;text-align:center;font-size:14px;font-weight:600}
+.weight-total{font-size:15px;font-weight:700;margin:12px 0;padding:10px;border-radius:6px;text-align:center}
+.weight-total.ok{background:color-mix(in srgb,var(--success) 15%,transparent);color:var(--success)}
+.weight-total.over{background:color-mix(in srgb,var(--error) 15%,transparent);color:var(--error)}
+.weight-total.under{background:color-mix(in srgb,var(--warn) 15%,transparent);color:var(--warn)}
+/* Gallery table */
+.gallery-search{margin-bottom:12px}
+.gallery-table{width:100%;border-collapse:collapse;font-size:13px}
+.gallery-table th{background:var(--bg);padding:8px;text-align:left;position:sticky;top:40px;border-bottom:2px solid var(--accent)}
+.gallery-table td{padding:8px;border-bottom:1px solid var(--border);vertical-align:middle}
+.gallery-table tr:hover{background:color-mix(in srgb,var(--accent) 5%,transparent)}
+.gallery-table select{width:70px;padding:4px}
+.gallery-table .confidence{display:flex;gap:4px}
+.gallery-table .confidence label{font-size:11px;padding:2px 6px;border-radius:10px;border:1px solid var(--border);cursor:pointer}
+.gallery-table .confidence label:has(input:checked){border-color:var(--accent);background:color-mix(in srgb,var(--accent) 15%,transparent)}
+.sector-tag{font-size:10px;padding:1px 6px;border-radius:8px;background:var(--bg);color:var(--fg2)}
+/* Anchor inputs */
+.anchor-tier{margin:12px 0}
+.anchor-tier h4{font-size:14px;margin-bottom:6px;color:var(--accent)}
+.anchor-inputs{display:flex;flex-direction:column;gap:4px}
+.anchor-inputs input{padding:8px}
+.add-anchor{font-size:12px;color:var(--accent);cursor:pointer;border:none;background:none;padding:4px 0;text-decoration:underline}
+/* Controversy table */
+.controversy-row{display:grid;grid-template-columns:1fr 80px 2fr;gap:8px;margin:6px 0;align-items:start}
+.controversy-row input,.controversy-row textarea{font-size:13px;padding:6px}
+.add-controversy{font-size:12px;color:var(--accent);cursor:pointer;border:none;background:none;padding:4px 0;text-decoration:underline}
+/* Tier definition table */
+.tier-table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+.tier-table th,.tier-table td{padding:8px;border:1px solid var(--border);text-align:left}
+.tier-table th{background:var(--bg);font-weight:600}
+/* Buttons */
+.btn{display:inline-block;padding:12px 32px;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+.btn-secondary{background:var(--bg);color:var(--fg);border:1px solid var(--border);font-size:13px;padding:8px 16px}
+.submit-area{text-align:center;margin:30px 0}
+/* Thank you */
+.thank-you{display:none;text-align:center;padding:60px 20px}
+.thank-you h2{color:var(--success);font-size:24px;margin-bottom:16px}
+.summary-box{background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:left;
+  font-size:12px;font-family:monospace;white-space:pre-wrap;max-height:400px;overflow-y:auto;margin:16px 0}
+.copy-btn{font-size:13px;padding:6px 16px;cursor:pointer;border:1px solid var(--border);border-radius:4px;background:var(--bg2);color:var(--fg)}
+@media(max-width:600px){
+  .controversy-row{grid-template-columns:1fr}
+  .weight-row{flex-direction:column;align-items:flex-start}
+  .weight-row input[type=range]{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">清华大学美术学院 · 艺术史论系</div>
+  <h1>画廊层级评估专家问卷</h1>
+  <div class="subtitle">中国当代艺术市场知识图谱 · 专家校准</div>
+</header>
+
+<div class="progress-bar"><div class="fill" id="progressFill" style="width:0%"></div></div>
+<div class="progress-text" id="progressText">第 1 部分 / 共 6 部分</div>
+
+<div class="container">
+
+<!-- Intro -->
+<section data-part="1">
+<h2>一、引言</h2>
+<p>感谢您参与本研究。本问卷旨在收集艺术行业资深从业者对画廊市场层级的判断，用于构建画廊层级分类的校准基准。</p>
+<p style="margin-top:8px">问卷约需 15-20 分钟。您的判断基于个人专业经验即可，不存在"正确答案"。不同专家之间的分歧本身也是我们关注的研究数据。</p>
+<div class="note">所有回复仅用于学术研究，不公开个人信息。</div>
+</section>
+
+<!-- Part 2: Background -->
+<section data-part="2">
+<h2>二、受访者背景</h2>
+
+<label>1. 您的姓名/代号（可匿名）</label>
+<input type="text" id="q_name" placeholder="如希望匿名可填写代号">
+
+<label>2. 当前职位/角色</label>
+<input type="text" id="q_role" placeholder="例：画廊总监、独立策展人">
+
+<label>3. 从业年限</label>
+<div class="radio-group">
+  <label><input type="radio" name="q_years" value="<3">3年以下</label>
+  <label><input type="radio" name="q_years" value="3-5">3-5年</label>
+  <label><input type="radio" name="q_years" value="5-10">5-10年</label>
+  <label><input type="radio" name="q_years" value="10-20">10-20年</label>
+  <label><input type="radio" name="q_years" value="20+">20年以上</label>
+</div>
+
+<label>4. 主要从业领域（可多选）</label>
+<div class="checkbox-group" id="q_fields">
+  <label><input type="checkbox" value="画廊经营/管理">画廊经营/管理</label>
+  <label><input type="checkbox" value="策展">策展</label>
+  <label><input type="checkbox" value="拍卖行">拍卖行</label>
+  <label><input type="checkbox" value="艺术顾问/收藏顾问">艺术顾问</label>
+  <label><input type="checkbox" value="艺术媒体/评论">艺术媒体/评论</label>
+  <label><input type="checkbox" value="美术馆/机构">美术馆/机构</label>
+  <label><input type="checkbox" value="收藏">收藏</label>
+  <label><input type="checkbox" value="学术研究">学术研究</label>
+  <label><input type="checkbox" value="博览会组织">博览会组织</label>
+</div>
+<input type="text" id="q_fields_other" placeholder="其他（请填写）" style="margin-top:4px">
+
+<label>5. 最熟悉的市场区域（可多选）</label>
+<div class="checkbox-group" id="q_regions">
+  <label><input type="checkbox" value="中国大陆">中国大陆</label>
+  <label><input type="checkbox" value="港澳台">港澳台</label>
+  <label><input type="checkbox" value="东南亚">东南亚</label>
+  <label><input type="checkbox" value="日韩">日韩</label>
+  <label><input type="checkbox" value="欧洲">欧洲</label>
+  <label><input type="checkbox" value="北美">北美</label>
+</div>
+<input type="text" id="q_regions_other" placeholder="其他（请填写）" style="margin-top:4px">
+</section>
+
+<!-- Part 3: Tier Definitions -->
+<section data-part="3">
+<h2>三、画廊层级定义</h2>
+<p>在回答之前，请先阅读以下层级定义。我们采用1-5级分类：</p>
+<table class="tier-table">
+<tr><th>层级</th><th>名称</th><th>简要特征</th></tr>
+<tr><td><b>Tier 1</b></td><td>超级蓝筹</td><td>全球多空间，代理最顶级艺术家，主导市场话语权，拍卖行级别影响力</td></tr>
+<tr><td><b>Tier 2</b></td><td>蓝筹</td><td>国际声誉，稳定参加顶级博览会主展区，代理成熟艺术家为主</td></tr>
+<tr><td><b>Tier 3</b></td><td>中坚</td><td>区域性知名度，参加主要博览会（可能在次级板块），混合成熟和中生代艺术家</td></tr>
+<tr><td><b>Tier 4</b></td><td>成长型</td><td>以新兴/中生代艺术家为主，参加新兴画廊板块博览会</td></tr>
+<tr><td><b>Tier 5</b></td><td>新锐/替代</td><td>成立较短，实验性项目为主，可能参加替代博览会或尚未参加主要博览会</td></tr>
+</table>
+<div class="note">这是<b>市场层级</b>分类，不是艺术质量评判。请基于<b>当前</b>（2025-2026年）的情况判断。</div>
+</section>
+
+<!-- Part 4: Anchors -->
+<section data-part="4">
+<h2>四、锚点标定</h2>
+
+<h3>A. 每个层级的"确定性"代表</h3>
+<p style="font-size:13px;color:var(--fg2)">请为每个层级列出最无争议的代表画廊（2-5家），全球范围均可。</p>
+
+<div id="anchorContainer">
+  <div class="anchor-tier" data-tier="1">
+    <h4>Tier 1 · 超级蓝筹</h4>
+    <div class="anchor-inputs">
+      <input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称">
+    </div>
+    <button class="add-anchor" onclick="addAnchor(this)">+ 添加更多</button>
+  </div>
+  <div class="anchor-tier" data-tier="2">
+    <h4>Tier 2 · 蓝筹</h4>
+    <div class="anchor-inputs">
+      <input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称">
+    </div>
+    <button class="add-anchor" onclick="addAnchor(this)">+ 添加更多</button>
+  </div>
+  <div class="anchor-tier" data-tier="3">
+    <h4>Tier 3 · 中坚</h4>
+    <div class="anchor-inputs">
+      <input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称">
+    </div>
+    <button class="add-anchor" onclick="addAnchor(this)">+ 添加更多</button>
+  </div>
+  <div class="anchor-tier" data-tier="4">
+    <h4>Tier 4 · 成长型</h4>
+    <div class="anchor-inputs">
+      <input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称">
+    </div>
+    <button class="add-anchor" onclick="addAnchor(this)">+ 添加更多</button>
+  </div>
+  <div class="anchor-tier" data-tier="5">
+    <h4>Tier 5 · 新锐/替代</h4>
+    <div class="anchor-inputs">
+      <input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称"><input type="text" placeholder="画廊名称">
+    </div>
+    <button class="add-anchor" onclick="addAnchor(this)">+ 添加更多</button>
+  </div>
+</div>
+
+<h3>B. 争议性案例</h3>
+<p style="font-size:13px;color:var(--fg2)">是否有某些画廊层级归属有争议或近年层级发生了变化？</p>
+<div id="controversyContainer">
+  <div class="controversy-row">
+    <input type="text" placeholder="画廊名称">
+    <input type="text" placeholder="层级">
+    <input type="text" placeholder="争议/变化原因">
+  </div>
+  <div class="controversy-row">
+    <input type="text" placeholder="画廊名称">
+    <input type="text" placeholder="层级">
+    <input type="text" placeholder="争议/变化原因">
+  </div>
+  <div class="controversy-row">
+    <input type="text" placeholder="画廊名称">
+    <input type="text" placeholder="层级">
+    <input type="text" placeholder="争议/变化原因">
+  </div>
+</div>
+<button class="add-controversy" onclick="addControversy()">+ 添加更多</button>
+</section>
+
+<!-- Part 5: Criteria -->
+<section data-part="5">
+<h2>五、层级判断依据</h2>
+
+<h3>A. 维度权重</h3>
+<p style="font-size:13px;color:var(--fg2)">请为每个维度分配权重（总和需等于100%）</p>
+
+<div id="weightSliders">
+  <div class="weight-row"><span class="dim-name">代理艺术家的市场表现</span><input type="range" min="0" max="50" value="0" oninput="updateWeights()"><span class="val">0%</span></div>
+  <div class="weight-row"><span class="dim-name">参加博览会的层级和板块</span><input type="range" min="0" max="50" value="0" oninput="updateWeights()"><span class="val">0%</span></div>
+  <div class="weight-row"><span class="dim-name">空间数量和地理分布</span><input type="range" min="0" max="50" value="0" oninput="updateWeights()"><span class="val">0%</span></div>
+  <div class="weight-row"><span class="dim-name">画廊历史和声誉积累</span><input type="range" min="0" max="50" value="0" oninput="updateWeights()"><span class="val">0%</span></div>
+  <div class="weight-row"><span class="dim-name">学术/策展项目的深度</span><input type="range" min="0" max="50" value="0" oninput="updateWeights()"><span class="val">0%</span></div>
+  <div class="weight-row"><span class="dim-name">藏家网络的质量</span><input type="range" min="0" max="50" value="0" oninput="updateWeights()"><span class="val">0%</span></div>
+  <div class="weight-row"><span class="dim-name">媒体曝光和话语权</span><input type="range" min="0" max="50" value="0" oninput="updateWeights()"><span class="val">0%</span></div>
+  <div class="weight-row"><span class="dim-name">年营业额/销售能力</span><input type="range" min="0" max="50" value="0" oninput="updateWeights()"><span class="val">0%</span></div>
+</div>
+<label>其他维度（如有）</label>
+<div class="weight-row"><input type="text" id="q_weight_other_name" placeholder="维度名称" style="flex:1;min-width:100px"><input type="range" min="0" max="50" value="0" oninput="updateWeights()" id="q_weight_other"><span class="val">0%</span></div>
+<div class="weight-total under" id="weightTotal">总计：0% (需要 = 100%)</div>
+
+<h3>B. 开放问题</h3>
+<label>1. 一家画廊从Tier 4升到Tier 3，最关键的转折事件通常是什么？</label>
+<textarea id="q_open1" placeholder="例如：签下某位艺术家、进入某个博览会、开设第二空间……"></textarea>
+
+<label>2. 一家画廊从Tier 2降到Tier 3，最常见的原因是什么？</label>
+<textarea id="q_open2"></textarea>
+
+<label>3. 中国本土画廊的层级评判标准，与国际画廊有何不同？</label>
+<textarea id="q_open3"></textarea>
+</section>
+
+<!-- Part 6: ABHK Sample -->
+<section data-part="6">
+<h2>六、ABHK 2026 样本标定（可选）</h2>
+<p style="font-size:13px;color:var(--fg2)">无需全部填写，只标注您有把握判断层级的画廊即可。</p>
+<input type="text" class="gallery-search" id="gallerySearch" placeholder="🔍 搜索画廊名称..." oninput="filterGalleries()">
+<div style="overflow-x:auto">
+<table class="gallery-table" id="galleryTable">
+<thead><tr><th>画廊</th><th>板块</th><th>层级</th><th>信心度</th><th>备注</th></tr></thead>
+<tbody id="galleryBody"></tbody>
+</table>
+</div>
+</section>
+
+<!-- Part 7: Supplement -->
+<section data-part="7">
+<h2>七、补充</h2>
+<label>有任何关于画廊层级分类的想法、质疑或建议：</label>
+<textarea id="q_supplement" rows="4"></textarea>
+
+<label>联系方式（可选，方便后续沟通）</label>
+<input type="text" id="q_contact" placeholder="邮箱或微信">
+</section>
+
+<div class="submit-area">
+  <button class="btn btn-primary" onclick="submitSurvey()">提交问卷</button>
+  <p style="margin-top:8px;font-size:12px;color:var(--fg2)">如有疑问请联系：高雨萌 gaoyumengiris@hotmail.com</p>
+</div>
+
+<!-- Thank You Page -->
+<div class="thank-you" id="thankYou">
+  <h2>✅ 感谢您的专业判断！</h2>
+  <p>您的回复已成功记录。</p>
+  <p style="margin:12px 0;font-size:13px;color:var(--fg2)">以下是您的回复摘要，可复制留底：</p>
+  <div class="summary-box" id="summaryBox"></div>
+  <button class="copy-btn" onclick="copySummary()">📋 复制摘要</button>
+  <p style="margin-top:20px;font-size:13px;color:var(--fg2)"><i>本问卷设计基于德尔菲法(Delphi Method)的校准锚点范式</i></p>
+</div>
+
+</div>
+
+<script>
+// ABHK Gallery Data (30 representative galleries)
+const GALLERIES = [
+  {name:"Gagosian",nameZh:"高古轩",sector:"Galleries",region:"Americas",tier:"blue-chip"},
+  {name:"David Zwirner",nameZh:"卓纳",sector:"Galleries",region:"Americas",tier:"blue-chip"},
+  {name:"Hauser & Wirth",nameZh:"豪瑟沃斯",sector:"Galleries",region:"Europe",tier:"blue-chip"},
+  {name:"White Cube",nameZh:"白立方",sector:"Galleries",region:"Europe",tier:"blue-chip"},
+  {name:"Pace Gallery",nameZh:"佩斯",sector:"Galleries",region:"Americas",tier:"blue-chip"},
+  {name:"Perrotin",nameZh:"贝浩登",sector:"Galleries",region:"Europe",tier:"blue-chip"},
+  {name:"Lehmann Maupin",nameZh:"立木",sector:"Galleries",region:"Americas",tier:"blue-chip"},
+  {name:"Lisson Gallery",nameZh:"里森",sector:"Galleries",region:"Europe",tier:"blue-chip"},
+  {name:"Sprüth Magers",nameZh:"",sector:"Galleries",region:"Europe",tier:"blue-chip"},
+  {name:"Gladstone Gallery",nameZh:"",sector:"Galleries",region:"Americas",tier:"blue-chip"},
+  {name:"Thaddaeus Ropac",nameZh:"",sector:"Galleries",region:"Europe",tier:"blue-chip"},
+  {name:"ShanghART Gallery",nameZh:"香格纳画廊",sector:"Galleries",region:"Asia",tier:"mid-tier"},
+  {name:"Kukje Gallery",nameZh:"国际画廊",sector:"Galleries",region:"Asia",tier:"mid-tier"},
+  {name:"Vitamin Creative Space",nameZh:"维他命艺术空间",sector:"Galleries",region:"Asia",tier:"mid-tier"},
+  {name:"Antenna Space",nameZh:"天线空间",sector:"Galleries",region:"Asia",tier:"mid-tier"},
+  {name:"47 Canal",nameZh:"",sector:"Galleries",region:"Americas",tier:"mid-tier"},
+  {name:"Pilar Corrias",nameZh:"",sector:"Galleries",region:"Europe",tier:"mid-tier"},
+  {name:"Taka Ishii Gallery",nameZh:"石井孝之画廊",sector:"Galleries",region:"Asia",tier:"mid-tier"},
+  {name:"Magician Space",nameZh:"魔金石空间",sector:"Galleries",region:"Asia",tier:"mid-tier"},
+  {name:"PKM Gallery",nameZh:"",sector:"Galleries",region:"Asia",tier:"mid-tier"},
+  {name:"10 Chancery Lane Gallery",nameZh:"10号赞善里画廊",sector:"Galleries",region:"Asia",tier:"mid-tier"},
+  {name:"Tang Contemporary Art",nameZh:"当代唐人艺术中心",sector:"Galleries",region:"Asia",tier:"emerging"},
+  {name:"de Sarthe",nameZh:"德萨画廊",sector:"Galleries",region:"Asia",tier:"emerging"},
+  {name:"Don Gallery",nameZh:"东画廊",sector:"Galleries",region:"Asia",tier:"emerging"},
+  {name:"Ota Fine Arts",nameZh:"大田秀则画廊",sector:"Galleries",region:"Asia",tier:"emerging"},
+  {name:"Capsule Shanghai",nameZh:"胶囊上海",sector:"Echoes",region:"Asia",tier:"emerging"},
+  {name:"Each Modern",nameZh:"亚纪画廊",sector:"Insights",region:"Asia",tier:"emerging"},
+  {name:"Gallery Vacancy",nameZh:"",sector:"Galleries",region:"Asia",tier:"mid-tier"},
+  {name:"Brownie Project",nameZh:"",sector:"Discoveries",region:"",tier:"emerging"},
+  {name:"Galerie Chantal Crousel",nameZh:"",sector:"Galleries",region:"Europe",tier:"blue-chip"},
+];
+
+// Render gallery table
+function renderGalleries(filter=''){
+  const f=filter.toLowerCase();
+  const tbody=document.getElementById('galleryBody');
+  tbody.innerHTML='';
+  GALLERIES.forEach((g,i)=>{
+    const display=g.name+(g.nameZh?' ('+g.nameZh+')':'');
+    if(f && !display.toLowerCase().includes(f) && !g.sector.toLowerCase().includes(f)) return;
+    const tr=document.createElement('tr');
+    tr.dataset.idx=i;
+    const confName=`conf_${i}`;
+    tr.innerHTML=`
+      <td><b>${g.name}</b>${g.nameZh?'<br><span style="font-size:11px;color:var(--fg2)">'+g.nameZh+'</span>':''}</td>
+      <td><span class="sector-tag">${g.sector}</span></td>
+      <td><select data-field="tier"><option value="">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+      <td><div class="confidence">
+        <label><input type="radio" name="${confName}" value="高">高</label>
+        <label><input type="radio" name="${confName}" value="中">中</label>
+        <label><input type="radio" name="${confName}" value="低">低</label>
+      </div></td>
+      <td><input type="text" data-field="note" placeholder="—" style="width:80px;padding:4px;font-size:12px"></td>`;
+    tbody.appendChild(tr);
+  });
+}
+function filterGalleries(){renderGalleries(document.getElementById('gallerySearch').value)}
+
+// Weight sliders
+function updateWeights(){
+  const rows=document.querySelectorAll('#weightSliders .weight-row, .weight-row:has(#q_weight_other)');
+  let total=0;
+  rows.forEach(r=>{
+    const slider=r.querySelector('input[type=range]');
+    const val=r.querySelector('.val');
+    if(slider&&val){val.textContent=slider.value+'%';total+=parseInt(slider.value)}
+  });
+  // include other
+  const otherSlider=document.getElementById('q_weight_other');
+  if(otherSlider){
+    const otherVal=otherSlider.parentElement.querySelector('.val');
+    if(otherVal){otherVal.textContent=otherSlider.value+'%';total+=parseInt(otherSlider.value)}
+  }
+  // recount properly
+  total=0;
+  document.querySelectorAll('.weight-row input[type=range]').forEach(s=>{total+=parseInt(s.value)});
+  const el=document.getElementById('weightTotal');
+  el.textContent=`总计：${total}%` + (total===100?' ✓':total>100?' ⚠️ 超过100%！':` (还差${100-total}%)`);
+  el.className='weight-total '+(total===100?'ok':total>100?'over':'under');
+}
+
+// Anchor: add more
+function addAnchor(btn){
+  const inputs=btn.previousElementSibling;
+  const inp=document.createElement('input');
+  inp.type='text';inp.placeholder='画廊名称';
+  inputs.appendChild(inp);
+  inp.focus();
+}
+
+// Controversy: add more
+function addControversy(){
+  const c=document.getElementById('controversyContainer');
+  const div=document.createElement('div');
+  div.className='controversy-row';
+  div.innerHTML='<input type="text" placeholder="画廊名称"><input type="text" placeholder="层级"><input type="text" placeholder="争议/变化原因">';
+  c.appendChild(div);
+}
+
+// Progress tracking
+function updateProgress(){
+  const sections=document.querySelectorAll('section[data-part]');
+  const total=sections.length;
+  // find the last section that's at least partially in view
+  let current=1;
+  sections.forEach(s=>{
+    const rect=s.getBoundingClientRect();
+    if(rect.top<window.innerHeight*0.5) current=parseInt(s.dataset.part);
+  });
+  document.getElementById('progressFill').style.width=(current/total*100)+'%';
+  document.getElementById('progressText').textContent=`第 ${current} 部分 / 共 ${total} 部分`;
+}
+window.addEventListener('scroll',updateProgress);
+
+// Collect all data
+function collectData(){
+  const data={};
+  data.timestamp=new Date().toISOString();
+  data.name=document.getElementById('q_name').value;
+  data.role=document.getElementById('q_role').value;
+  data.years=document.querySelector('input[name=q_years]:checked')?.value||'';
+  data.fields=[...document.querySelectorAll('#q_fields input:checked')].map(c=>c.value);
+  const fo=document.getElementById('q_fields_other').value;if(fo)data.fields.push(fo);
+  data.regions=[...document.querySelectorAll('#q_regions input:checked')].map(c=>c.value);
+  const ro=document.getElementById('q_regions_other').value;if(ro)data.regions.push(ro);
+
+  // Anchors
+  data.anchors={};
+  document.querySelectorAll('.anchor-tier').forEach(at=>{
+    const tier=at.dataset.tier;
+    data.anchors['tier'+tier]=[...at.querySelectorAll('input')].map(i=>i.value).filter(v=>v);
+  });
+
+  // Controversy
+  data.controversies=[];
+  document.querySelectorAll('.controversy-row').forEach(r=>{
+    const inputs=r.querySelectorAll('input');
+    if(inputs[0].value) data.controversies.push({gallery:inputs[0].value,tier:inputs[1].value,reason:inputs[2].value});
+  });
+
+  // Weights
+  const dims=["代理艺术家的市场表现","参加博览会的层级和板块","空间数量和地理分布","画廊历史和声誉积累","学术/策展项目的深度","藏家网络的质量","媒体曝光和话语权","年营业额/销售能力"];
+  data.weights={};
+  document.querySelectorAll('#weightSliders .weight-row').forEach((r,i)=>{
+    data.weights[dims[i]]=parseInt(r.querySelector('input[type=range]').value);
+  });
+  const otherName=document.getElementById('q_weight_other_name').value;
+  const otherVal=parseInt(document.getElementById('q_weight_other').value);
+  if(otherName&&otherVal>0) data.weights[otherName]=otherVal;
+
+  data.open1=document.getElementById('q_open1').value;
+  data.open2=document.getElementById('q_open2').value;
+  data.open3=document.getElementById('q_open3').value;
+
+  // Gallery ratings
+  data.galleryRatings=[];
+  document.querySelectorAll('#galleryBody tr').forEach(tr=>{
+    const idx=parseInt(tr.dataset.idx);
+    const tier=tr.querySelector('select[data-field=tier]').value;
+    if(!tier)return;
+    const conf=tr.querySelector('.confidence input:checked')?.value||'';
+    const note=tr.querySelector('input[data-field=note]').value;
+    data.galleryRatings.push({gallery:GALLERIES[idx].name,tier:parseInt(tier),confidence:conf,note});
+  });
+
+  data.supplement=document.getElementById('q_supplement').value;
+  data.contact=document.getElementById('q_contact').value;
+  return data;
+}
+
+// Generate text summary
+function generateSummary(data){
+  let s=`画廊层级评估专家问卷 · 回复摘要\n`;
+  s+=`提交时间：${data.timestamp}\n`;
+  s+=`${'='.repeat(40)}\n\n`;
+  s+=`姓名/代号：${data.name||'匿名'}\n`;
+  s+=`职位：${data.role}\n`;
+  s+=`从业年限：${data.years}\n`;
+  s+=`从业领域：${data.fields.join('、')}\n`;
+  s+=`熟悉区域：${data.regions.join('、')}\n\n`;
+
+  s+=`--- 锚点标定 ---\n`;
+  for(let t=1;t<=5;t++){
+    const arr=data.anchors['tier'+t]||[];
+    if(arr.length) s+=`Tier ${t}：${arr.join('、')}\n`;
+  }
+  if(data.controversies.length){
+    s+=`\n争议案例：\n`;
+    data.controversies.forEach(c=>s+=`  ${c.gallery} → ${c.tier} (${c.reason})\n`);
+  }
+
+  s+=`\n--- 维度权重 ---\n`;
+  Object.entries(data.weights).forEach(([k,v])=>{if(v>0)s+=`  ${k}：${v}%\n`});
+
+  if(data.open1) s+=`\nTier4→3转折：${data.open1}\n`;
+  if(data.open2) s+=`Tier2→3原因：${data.open2}\n`;
+  if(data.open3) s+=`中国vs国际：${data.open3}\n`;
+
+  if(data.galleryRatings.length){
+    s+=`\n--- ABHK样本标定 ---\n`;
+    data.galleryRatings.forEach(r=>s+=`  ${r.gallery}：Tier ${r.tier} (${r.confidence}) ${r.note?'- '+r.note:''}\n`);
+  }
+  if(data.supplement) s+=`\n补充：${data.supplement}\n`;
+  return s;
+}
+
+// Submit
+const WORKER_URL='https://gallery-tier-survey.iris47.workers.dev';
+
+async function submitSurvey(){
+  const data=collectData();
+  const summary=generateSummary(data);
+  let submitted=false;
+
+  // Try API first
+  try{
+    const resp=await fetch(WORKER_URL+'/api/survey',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+    });
+    if(resp.ok) submitted=true;
+  }catch(e){console.log('API unavailable, using fallback');}
+
+  if(!submitted){
+    // Fallback: download JSON
+    const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;a.download=`survey-${data.name||'anonymous'}-${Date.now()}.json`;
+    a.click();URL.revokeObjectURL(url);
+  }
+
+  // Show thank you page
+  document.querySelectorAll('section,.submit-area').forEach(el=>el.style.display='none');
+  document.getElementById('thankYou').style.display='block';
+  document.getElementById('summaryBox').textContent=summary;
+  document.getElementById('progressFill').style.width='100%';
+  document.getElementById('progressText').textContent='已完成 ✓';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function copySummary(){
+  navigator.clipboard.writeText(document.getElementById('summaryBox').textContent)
+    .then(()=>{document.querySelector('.copy-btn').textContent='✅ 已复制！';setTimeout(()=>document.querySelector('.copy-btn').textContent='📋 复制摘要',2000)});
+}
+
+// Init
+renderGalleries();
+updateWeights();
+</script>
+</body>
+</html>
